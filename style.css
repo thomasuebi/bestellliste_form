@@ -17,7 +17,7 @@ body {
 }
 
 .container {
-  width: 900px;
+  width: 75%;
   margin: 0 auto;
   border-top: 5px solid #435757;
   background-color: rgba(255, 255, 255, .2);
@@ -93,6 +93,7 @@ label {
   animation: undone .5s;
   text-align: left;
   margin-left: 10px;
+    overflow-wrap: break-word;
 }
 
 label:not[.radios]::before {
@@ -222,6 +223,7 @@ input[type="text"]:disabled{
     
 }
 
+
 .col-lg-3,.col-md-3,.col-sm-3 {
     padding-left: 0;
     padding-right: 0;
@@ -324,8 +326,9 @@ input[type="radio"] {
       z-index: 2;
       transition: color 200ms ease-in;
       overflow: hidden;
-    margin-left: 0;
-    border-top: none;
+      margin-left: 0;
+      border-top: none;
+    
 }
       
 .inputGroup label:before {
@@ -412,6 +415,7 @@ input[type="radio"] {
 
 .sumText {
     display: flex;
+    justify-content: center;
 }
 
 [type="date"] {
@@ -456,4 +460,120 @@ input[type="date"] {
 
 .abschick:hover {
     background: #5b7575;
+}
+
+@media (max-width: 575px) {
+    label {
+        display: block;
+        position: relative;
+        padding: 15px 0 15px 0px;
+        border-top: 1px dashed #fff;
+        cursor: pointer;
+        animation: undone .5s;
+        text-align: left;
+        margin-left: 10px;
+        overflow-wrap: break-word;
+        font-size: 15px;
+        padding-right: 5px;
+    }
+    
+    .qty {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: right;
+        width: 5%;
+    }
+    
+    .qty .minus {
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: top;
+        color: #435757;
+        width: 30px;
+        height: 30px;
+        font: 28px/1 Arial,sans-serif;
+        text-align: center;
+        border-radius: 4px 4px 0 0;
+        background-clip: padding-box;
+        background-color: white;
+        border: 1px solid grey;
+        border-width: thin;
+    }
+    
+    .qty .plus {
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: top;
+        color: #435757;
+        width: 30px;
+        height: 30px;
+        font: 30px/1 Arial,sans-serif;
+        text-align: center;
+        border-radius: 0 0 4px 4px;
+        padding-right: 0;
+        background-color: white;
+        border: 1px solid grey;
+        border-width: thin;
+    }
+    
+    .qty .count {
+        color: #000;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 16px;
+        line-height: 30px;
+        padding: 0 2px;
+        width: 30px;
+        height: 30px;
+        border-right: 1px solid grey;
+        border-left: 1px solid grey;
+        border-width: thin;
+        font-family: 'Montserrat', 'sans-serif';
+    }
+    
+    .text {
+        margin-top: 43px;
+        margin-left: -5px;
+        width: 140%;
+        overflow-wrap: break-word;
+    }
+    
+    .col-sm-5 {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    
+    .mob {
+        font-size: 16px;
+    }
+    
+    .x-button {
+        border: 1px solid #435757;
+        border-radius: 4px;
+        color: #435757;
+        background: rgba(255,255,255,0.5);
+        margin-top: 40px;
+        padding: 4px;
+        margin-left: 10px;
+    }
+    
+    .price {
+        font-size: 16px;
+    }
+    .eur {
+        font-size: 16px;
+    }
+    
+    h1 {
+        margin: 0;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, .4);
+        font-size: 1.4em;
+        text-align: center;
+    } 
+    
+    
+    .container {
+        width: 100%;
+    }
 }

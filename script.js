@@ -20,7 +20,7 @@ var userId = url.searchParams.get("id");
 var database = firebase.firestore();
 
 
-var docRef = database.collection("forms").doc(userId);
+var docRef = database.collection("forms").doc("z8iPY88rncYEKMB52dSEWZPsPCg1");
 
 
 async function fire() {
@@ -62,7 +62,7 @@ async function fire() {
                     row.classList = 'row';
 
                     var col1 = document.createElement('div');
-                    col1.classList = 'col-lg-7 col-md-6 col-sm-5 col-xs-4'
+                    col1.classList = 'col-lg-7 col-md-6 col-sm-5 col-6'
                     var input = document.createElement('input');
                     input.id = 'item'.concat(counter1)
                     input.type = "checkbox";
@@ -76,7 +76,7 @@ async function fire() {
                     row.appendChild(col1);
 
                     var col2 = document.createElement('div');
-                    col2.classList = "col-lg-3 col-md-3 col-sm-3 col-xs-2";
+                    col2.classList = "col-lg-3 col-md-3 col-sm-3 col-2";
                     var qty = document.createElement('div');
                     qty.classList = "qty"
 
@@ -105,7 +105,7 @@ async function fire() {
                     row.appendChild(col2);
 
                     var col3 = document.createElement('div');
-                    col3.classList = "col-lg-2 col-md-2 col-sm-2 col-xs-2";
+                    col3.classList = "col-lg-2 col-md-2 col-sm-2 col-2";
                     var tex = document.createElement('div');
                     tex.classList = "text"
                     var p1 = document.createElement('p');
@@ -118,6 +118,7 @@ async function fire() {
                     var p2 = document.createElement('p');
                     p2.style.display = "inline";
                     p2.innerHTML = " EUR";
+                    p2.classList = "eur";
 
                     tex.appendChild(p1);
                     tex.appendChild(p2);
@@ -316,7 +317,7 @@ async function fire() {
                 
                 
                 parenParent.appendChild(div);
-                parenParent.firstChild.nextElementSibling.classList = "col-lg-2 col-md-3 col-sm-3 col-xs-2";
+                parenParent.firstChild.nextElementSibling.classList = "col-lg-2 col-md-3 col-sm-3 col-2";
                 
                 document.getElementById('warenkorb').appendChild(parenParent);
                 sumUp();
@@ -341,11 +342,13 @@ async function fire() {
            div.classList = 'sumText';
            
            var sumText = document.createElement('h5');
-           sumText.innerHTML = "Gesamtsumme";
+           sumText.innerHTML = "Summe";
            sumText.id = 'sum';
            sumText.style.textAlign = 'left';
            sumText.style.margin = '4%';
-           sumText.style.marginRight = "57%";
+           sumText.style.marginRight = "4%";
+           sumText.style.marginLeft = "0";
+           sumText.classList = "mob";
            div.appendChild(sumText);
            
            var summe = document.createElement('h5');
@@ -354,12 +357,14 @@ async function fire() {
            summe.style.marginTop = '4%';
            
            summe.style.textAlign = 'right';
+           summe.classList = "mob";
            
            var eur = document.createElement('h5');
            eur.innerHTML = '&euro;/EUR';
            eur.id = 'eur';
            eur.style.marginTop = '4%';
            eur.style.textAlign = 'right';
+           eur.classList = "mob";
            
            div.appendChild(summe);
            div.appendChild(eur);
@@ -394,9 +399,6 @@ function validDate() {
 var radio1 = document.getElementById('radio1');
 radio1.addEventListener('click', function() {
     if(radio1.checked) {
-        document.getElementById('time').style.display = "flex";
-    }
-    else {
         document.getElementById('time').style.display = "none";
     }
 });
@@ -404,6 +406,9 @@ radio1.addEventListener('click', function() {
 var radio2 = document.getElementById('radio2');
 radio2.addEventListener('click', function() {
     if(radio2.checked) {
+        document.getElementById('time').style.display = "flex";
+    }
+    else {
         document.getElementById('time').style.display = "none";
     }
 });
