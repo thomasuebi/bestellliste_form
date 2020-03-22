@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="de">
+  <head>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+      
+
+    <title>Bestellliste</title>
+  </head>
+  <body>
+      <div class="container" id="cont">
+      <h1>Bestellliste</h1>
+      <h4 style="margin-top: 10px;margin-bottom: 10px;">Wähle Sie Ihre gewünschten Produkte sowie die Menge aus: (Wichtig Produkt anhaken, sodass es erfasst wird)</h4>
+
+      
+        
+          
+        <h2 class="done" aria-hidden="true" id="w">Warenkorb</h2>
+        <div class="items" id='warenkorb'>
+          
+        </div>
+
+          
+          
+
+        <div class="kontakt">
+            <form class="kontaktdaten" id='form' method="post">
+
+                <h2 class="done" aria-hidden="true">Hast du ein Produkt nicht gefunden? Schreibe im Textfeld unten deine Wünsche nieder!</h2>
+                <div class="row">
+                        <div class="col-12">
+                            <div class="info-box">
+                                <textarea class="kw-input" name="wunsch" placeholder="- Haselnüsse 200g, ..."></textarea>
+                            </div>
+                        </div>
+                </div>
+
+                <h1>Kontaktdaten</h1>
+                <h2 class="done" aria-hidden="true">Dein Name</h2>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="info-box">
+                            <h5 class="header-k">Vorname</h5>
+                            <input type="text" name="vorname" placeholder="" class="k-input" id="vorname">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="info-box">
+                            <h5 class="header-k">Nachname</h5>
+                            <input type="text" name="nachname" placeholder="" class="k-input" id="nachname">
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <h2 class="done" aria-hidden="true">Email</h2>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="info-box">
+                            <h5 class="header-k">Zur Information über den Bestellstatus</h5>
+                            <input type="text" name="email" placeholder="" class="k-input" id="email">
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <h2 class="done" aria-hidden="true">Adresse</h2>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="info-box">
+                            <h5 class="header-k">Straße + Hausnummer</h5>
+                            <input type="text" name="straße" placeholder="" class="k-input" id="straße">
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="info-box">
+                            <h5 class="header-k">Stadt</h5>
+                            <input type="text" name="stadt" placeholder="" class="k-input" id="stadt">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="info-box">
+                            <h5 class="header-k">Postleitzahl</h5>
+                            <input type="text" name="postleitzahl" placeholder="" class="k-input" id="postleitzahl">
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="info-box">
+                                <h5 class="header-k">Gemeinde</h5>
+                                <input type="text" name="gemeinde" placeholder="" class="k-input" id="gemeinde">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                </div>
+                
+                <h2 class="done" aria-hidden="true">Wunschtermin</h2>
+                <div class="row">
+                    <label class="date" for="wunschtermin">Ausgewählt:</label>
+                    <input type="date" name="date" id="dateofbirth" id="wunschtermin">
+                </div>
+                
+                <h2 class="done" aria-hidden="true">Telefonnummer</h2>
+                <div class="row">
+                    <div class="col-12" style="margin-top: 20px;">
+                        <div class="info-box">
+                            <input type="text" name="telefon" placeholder="z.B: +43..." class="k-input" id="telefonnummer">
+                        </div>
+                    </div>
+                    
+                </div>
+                <h2 class="done" aria-hidden="true">Lieferung oder Abholung?</h2>
+                <div class="row">
+                    <div class="col">
+                        <div class="inputGroup">
+                            <input id="radio1" name="radio1" type="radio" value="Abholung"/>
+                            <label for="radio1">Abholung</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="inputGroup">
+                            <input id="radio2" name="radio1" type="radio" value="Lieferung"/>
+                            <label for="radio2">Lieferung</label>
+                        </div>
+                    </div>
+                </div>
+                    
+                    <div class="row" id="time" style="display: none;">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="info-box">
+                            <h5 class="header-k">Präferierte Lieferzeit:</h5>
+                            <input type="time" name="lieferzeit" placeholder="" class="k-input" style="margin-top: 20px;">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="info-box">
+                            <h5 class="header-k">Anmerkung (Optional)</h5>
+                                <textarea class="kw-input" name="anmerkungen" placeholder="" style="height: auto; margin:0;"></textarea>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <h2 class="done" aria-hidden="true">Zahlungsart:</h2>
+                <div class="row">
+                    <div class="col" id='bar'>
+                        <div class="inputGroup">
+                            <input id="radio3" name="radio2" type="radio" value="Barzahlung"/>
+                            <label for="radio3">Barzahlung</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="inputGroup">
+                            <input id="radio4" name="radio2" type="radio" value="Rechnung"/>
+                            <label for="radio4">Rechnung</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col" style="border-radius: 10px;">
+                        <input type="checkbox" id="agb" class="agb">
+                        <label for="agb">*Ich habe die Datenschutzerklärung zur Kenntnis genommen. Ich stimme zu, dass meine Angaben und Daten zur Beantwortung meiner Anfrage elektronisch erhoben und gespeichert werden.</label>
+                    </div>
+                </div>
+                
+                <div class="row" style="justify-content: center;">
+                    <a href="#form"><button class="abschick" type="button" id="submitbtn">Anfrage senden</button></a>
+                </div>
+                
+            </form>
+        </div>
+      </div>
+      
+      
+      
+      
+      <script>
+       
+        
+        </script>
+      
+      
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+  </body>
+</html>

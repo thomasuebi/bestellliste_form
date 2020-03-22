@@ -1,0 +1,459 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:500,700);
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 20px;
+  color: #435757;
+  background: linear-gradient(-20deg, #d0b782 20%, #a0cecf 80%);
+  font: 500 1.2em/1.2 'Roboto', sans-serif;
+    
+}
+
+.container {
+  width: 900px;
+  margin: 0 auto;
+  border-top: 5px solid #435757;
+  background-color: rgba(255, 255, 255, .2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  user-select: none;
+}
+
+h1 {
+  margin: 0;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, .4);
+  font-size: 1.8em;
+  text-align: center;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.container h2 {
+  position: relative;
+  margin: 0;
+  padding: 10px 0;
+  font-size: 1.2em;
+  text-align: left;
+  border-bottom: 2px solid #435757;
+  display: table;
+  margin-top:10px;
+    
+}
+
+form h2 {
+    margin-top: 30px!important;
+}
+
+h2::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: -15px;
+  width: 5px;
+  background-color: #435757;
+}
+
+h2::after {
+  display: block;
+  float: right;
+  font-weight: normal;
+}
+
+
+
+/* hide inputs offscreen, but at the same vertical positions as the correpsonding labels, so that tabbing scrolls the viewport as expected */
+input[type="checkbox"] {
+  display: block;
+  height: 53px;
+  margin: 0 0 -53px -9999px;
+  outline: none;
+  counter-increment: undone-items;
+}
+
+
+label {
+  display: block;
+  position: relative;
+  padding: 15px 0 15px 45px;
+  border-top: 1px dashed #fff;
+  cursor: pointer;
+  animation: undone .5s;
+  text-align: left;
+  margin-left: 10px;
+}
+
+label:not[.radios]::before {
+  content: '\f10c'; /* circle outline */
+  display: block;
+  position: absolute;
+  top: 11px;
+  left: 10px;
+  font: 1.5em 'FontAwesome';
+}
+
+label:hover, input[type="checkbox"]:focus + label {
+  background-color: rgba(255, 255, 255, .2);
+}
+
+input[type="checkbox"]:checked + label {
+  animation: done .5s;
+}
+
+input[type="checkbox"]:checked + label::before { 
+    content: "✔ ";/* circle checkmark */
+}
+
+@keyframes done {
+  0% {
+    opacity: 0;
+    background-color: rgba(255, 255, 255, .4);
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, .4);
+  }
+}
+
+@keyframes undone {
+  0% {
+    opacity: 0;
+    background-color: rgba(255, 255, 255, .4);
+    transform: translateY(-20px);
+  }
+  50% {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, .4);
+  }
+}
+
+
+.qty {
+    margin-top: 15px;
+    text-align: right;
+}
+
+.qty .count {
+    color: #000;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
+    line-height: 30px;
+    padding: 0 2px;
+    width: 35px;
+    height: 30px;
+    text-align: center;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-width: thin;
+    font-family: 'Montserrat', 'sans-serif';
+}
+.qty .plus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: #435757;
+    width: 30px;
+    height: 30px;
+    font: 30px/1 Arial,sans-serif;
+    text-align: center;
+    border-radius: 0 4px 4px 0;
+    padding-right: 0;
+    background-color:white;
+    border: 1px solid grey;
+    border-width: thin;
+    }
+.qty .minus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: #435757;
+    width: 30px;
+    height: 30px;
+    font: 28px/1 Arial,sans-serif;
+    text-align: center;
+    border-radius: 4px 0 0 4px;
+    background-clip: padding-box;
+    background-color:white;
+    border: 1px solid grey;
+    border-width: thin;
+}
+div {
+    text-align: center;
+}
+.minus:hover{
+    background-color: rgba(255,255,255,0.6)!important;
+}
+.plus:hover{
+    background-color: rgba(255,255,255,0.6)!important;
+}
+/*Prevent text selection*/
+span{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+input::-webkit-outer-spin-button,
+input[type="text"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="text"]:disabled{
+    background-color:#435757;
+}
+
+.col-lg-2,.col-md-2,.col-sm-2,.col-xs-2 {
+    padding-left: 0;
+    padding-right: 0;
+    border-top: 1px dashed #fff;
+    
+}
+
+.col-lg-3,.col-md-3,.col-sm-3 {
+    padding-left: 0;
+    padding-right: 0;
+    border-top: 1px dashed #fff;
+}
+.col-lg-7 {
+    padding-right: 0;
+}
+.col-md-6 {
+    padding-right: 0;
+}
+
+.col-sm-5 {
+    padding-right: 0;
+}
+.col-xs-5 {
+    padding-right: 0;
+}
+
+
+
+.text {
+    margin-top: 20px;
+}
+
+.info-box {
+    width: 100%;
+}
+
+.header-k {
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.k-input {
+    border:none;
+    border-bottom: 2px solid rgba(255,255,255,0.7);
+    border-width: thin;
+    background-color: rgba(255,255,255,0.0);
+    width: 100%;
+}
+
+.kw-input {
+    border:none;
+    border-bottom: 3px solid rgba(255,255,255,0.7);
+    border-width: thin;
+    background-color: rgba(255,255,255,0.0);
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    overflow-wrap: break-word;
+    height: 100px;
+}
+
+.kw-input::placeholder {
+    vertical-align: top;
+    
+}
+
+.kw-input:focus {
+    outline: none;
+    border-bottom: 1px solid #435757;
+    color: #435757;
+}
+
+
+input[type="text"]:focus {
+    outline: none;
+    color:#435757;
+    border-bottom: 1px solid #435757;
+    transform-origin: 0% 50%;
+}
+
+.radios {
+    border:none;
+    text-align: center;
+}
+
+input[type="radio"] {
+    display: block;
+    height: 53px;
+    outline: none;
+}
+
+.inputGroup {
+    background-color: rgba(255,255,255,0.3);
+    display: block;
+    margin: 10px 0;
+    position: relative;
+}
+.inputGroup label {
+      padding: 12px 30px;
+      width: 100%;
+      display: block;
+      text-align: left;
+      color: #3C454C;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 200ms ease-in;
+      overflow: hidden;
+    margin-left: 0;
+    border-top: none;
+}
+      
+.inputGroup label:before {
+        width: 15px;
+        height: 10px;
+        border-radius: 50%;
+        content: '';
+        background-color: rgba(255,255,255,0.6);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale3d(1, 1, 1);
+        transition: all 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+        opacity: 0;
+        z-index: -1;
+      }
+
+.inputGroup label:after {
+        width: 32px;
+        height: 32px;
+        content: '';
+        border: 2px solid #D1D7DC;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+        background-repeat: no-repeat;
+        background-position: 2px 3px;
+        border-radius: 50%;
+        z-index: 2;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        transition: all 200ms ease-in;
+      }
+
+
+.inputGroup input:checked ~ label {
+      color: #435757;
+}
+.inputGroup input:checked ~ label:before {
+        transform: translate(-50%, -50%) scale3d(56, 56, 1);
+        opacity: 1;
+}
+
+.inputGroup input:checked ~ label:after {
+        background-color: #435757;
+        border-color: #435757;
+}
+
+.inputGroup input {
+      width: 32px;
+      height: 32px;
+      order: 1;
+      z-index: 2;
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      visibility: hidden;
+  }
+
+.count {
+    border:none;
+}
+
+.x-button {
+    border: 1px solid #435757;
+    border-radius: 4px;
+    color:#435757;
+    background: rgba(255,255,255,0.5);
+    margin-top: 18px;
+    
+}
+
+.x-button:focus {
+    outline:none;
+}
+
+.bd {
+    border-bottom: 1px solid #333;
+}
+
+.sumText {
+    display: flex;
+}
+
+[type="date"] {
+  background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+/* custom styles */
+
+.date {
+  display: block;
+    border: none;
+    margin: 0;
+    margin-right: 30px;
+    
+}
+input[type="date"] {
+    border: none;
+  border-bottom: 1px solid #435757;
+  background-color: rgba(255,255,255,0.0);
+  padding: 3px 5px;
+  width: 190px;
+    outline: none;
+}
+
+.abschick {
+    background: #435757;
+    color:white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 18px;
+    margin: 5%;
+    border:1px solid #435757;
+    width: 200px;
+}
+
+.abschick:hover {
+    background: #5b7575;
+}
