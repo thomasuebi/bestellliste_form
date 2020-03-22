@@ -17,7 +17,6 @@
 
 var url = new URL(window.location.href);
 var userId = url.searchParams.get("id");
-console.log(id)
 var database = firebase.firestore();
 
 
