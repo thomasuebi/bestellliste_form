@@ -42,94 +42,94 @@ async function fire() {
     var counter1 = 0;
     var objects = data['data'];
     for(obj in objects) {
-        counter = counter + 1;
-        var h2 = document.createElement('h2');
-        var w = document.getElementById('w');
-        var cont = document.getElementById('cont');
-        h2.classList = "undone";
-        h2.setAttribute('aria-Hidden', 'true');
-        h2.innerHTML= objects[obj]['name'] + '(Optional)';
-        cont.insertBefore(h2, w); // before warenkorb
-        var div = document.createElement('div')
-        div.classList = 'items'
-        div.id = 'items-'.concat(counter)
-        cont.insertBefore(div, w);
-        for(product in objects[obj]['products']) {
-            counter1 = counter1 + 1;
-            var row = document.createElement('div');
-            row.classList = 'row';
-            
-            var col1 = document.createElement('div');
-            col1.classList = 'col-lg-7 col-md-6 col-sm-5 col-xs-4'
-            var input = document.createElement('input');
-            input.id = 'item'.concat(counter1)
-            input.type = "checkbox";
-            input.classList = "checkboxes";
-            var label = document.createElement('label');
-            label.setAttribute('for','item'.concat(counter1))
-            label.innerHTML = objects[obj]['products'][product]['name'];
-            
-            col1.appendChild(input);
-            col1.appendChild(label);
-            row.appendChild(col1);
-            
-            var col2 = document.createElement('div');
-            col2.classList = "col-lg-3 col-md-3 col-sm-3 col-xs-2";
-            var qty = document.createElement('div');
-            qty.classList = "qty"
-            
-            var minusBtn = document.createElement('span');
-            minusBtn.classList = "minus";
-            minusBtn.style.pointerEvents = "none";
-            minusBtn.style.color = "#8f8f8f";
-            
-            minusBtn.innerHTML = "-";
-            
-            var c = document.createElement('input');
-            c.type = "text";
-            c.id = counter1;
-            c.name = "qty";
-            c.classList = "count";
-            c.value = "0";
-            
-            var plusBtn = document.createElement('span');
-            plusBtn.classList = "plus";
-            plusBtn.innerHTML = "+";
-            
-            qty.appendChild(minusBtn);
-            qty.appendChild(c);
-            qty.appendChild(plusBtn);
-            col2.appendChild(qty);
-            row.appendChild(col2);
-            
-            var col3 = document.createElement('div');
-            col3.classList = "col-lg-2 col-md-2 col-sm-2 col-xs-2";
-            var tex = document.createElement('div');
-            tex.classList = "text"
-            var p1 = document.createElement('p');
-            p1.id = 'p-'.concat(counter1);
-            p1.style.marginTop = "20%";
-            p1.style.display = "inline";
-            p1.classList = "price";
-            p1.innerHTML = objects[obj]['products'][product]['price'];
-            
-            var p2 = document.createElement('p');
-            p2.style.display = "inline";
-            p2.innerHTML = " EUR";
-            
-            tex.appendChild(p1);
-            tex.appendChild(p2);
-            col3.appendChild(tex);
-            row.appendChild(col3);
-            
-            div.appendChild(row);
-            
-            
-            
-            
-            
-            
-        }
+        if(objects[obj]['name']) {
+            counter = counter + 1;
+            var h2 = document.createElement('h2');
+            var w = document.getElementById('w');
+            var cont = document.getElementById('cont');
+            h2.classList = "undone";
+            h2.setAttribute('aria-Hidden', 'true');
+            h2.innerHTML= objects[obj]['name'] + '(Optional)';
+            cont.insertBefore(h2, w); // before warenkorb
+            var div = document.createElement('div')
+            div.classList = 'items'
+            div.id = 'items-'.concat(counter)
+            cont.insertBefore(div, w);
+            for(product in objects[obj]['products']) {
+                if(objects[obj]['products'][product]['name']) {
+                    counter1 = counter1 + 1;
+                    var row = document.createElement('div');
+                    row.classList = 'row';
+
+                    var col1 = document.createElement('div');
+                    col1.classList = 'col-lg-7 col-md-6 col-sm-5 col-xs-4'
+                    var input = document.createElement('input');
+                    input.id = 'item'.concat(counter1)
+                    input.type = "checkbox";
+                    input.classList = "checkboxes";
+                    var label = document.createElement('label');
+                    label.setAttribute('for','item'.concat(counter1))
+                    label.innerHTML = objects[obj]['products'][product]['name'];
+
+                    col1.appendChild(input);
+                    col1.appendChild(label);
+                    row.appendChild(col1);
+
+                    var col2 = document.createElement('div');
+                    col2.classList = "col-lg-3 col-md-3 col-sm-3 col-xs-2";
+                    var qty = document.createElement('div');
+                    qty.classList = "qty"
+
+                    var minusBtn = document.createElement('span');
+                    minusBtn.classList = "minus";
+                    minusBtn.style.pointerEvents = "none";
+                    minusBtn.style.color = "#8f8f8f";
+
+                    minusBtn.innerHTML = "-";
+
+                    var c = document.createElement('input');
+                    c.type = "text";
+                    c.id = counter1;
+                    c.name = "qty";
+                    c.classList = "count";
+                    c.value = "0";
+
+                    var plusBtn = document.createElement('span');
+                    plusBtn.classList = "plus";
+                    plusBtn.innerHTML = "+";
+
+                    qty.appendChild(minusBtn);
+                    qty.appendChild(c);
+                    qty.appendChild(plusBtn);
+                    col2.appendChild(qty);
+                    row.appendChild(col2);
+
+                    var col3 = document.createElement('div');
+                    col3.classList = "col-lg-2 col-md-2 col-sm-2 col-xs-2";
+                    var tex = document.createElement('div');
+                    tex.classList = "text"
+                    var p1 = document.createElement('p');
+                    p1.id = 'p-'.concat(counter1);
+                    p1.style.marginTop = "20%";
+                    p1.style.display = "inline";
+                    p1.classList = "price";
+                    p1.innerHTML = objects[obj]['products'][product]['price'];
+
+                    var p2 = document.createElement('p');
+                    p2.style.display = "inline";
+                    p2.innerHTML = " EUR";
+
+                    tex.appendChild(p1);
+                    tex.appendChild(p2);
+                    col3.appendChild(tex);
+                    row.appendChild(col3);
+
+                    div.appendChild(row);
+
+                }
+
+            }
+    }
         
         
         
