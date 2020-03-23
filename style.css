@@ -94,6 +94,8 @@ label {
   text-align: left;
   margin-left: 10px;
     overflow-wrap: break-word;
+   font-size: 1.3rem;
+  color: #435757;
 }
 
 label:not[.radios]::before {
@@ -474,6 +476,7 @@ input[type="date"] {
 
 
 
+
 @media (min-width: 580px) {
     .col-5 {
         border-top: 1px dashed #fff!important;
@@ -481,7 +484,7 @@ input[type="date"] {
 }
 
 @media (max-width: 740px) {
-    label:not(.date,.la) {
+    label {
         display: block;
         position: relative;
         padding: 15px 0 15px 0px;
@@ -550,4 +553,10 @@ input[type="date"] {
     .container {
         width: 100%;
     }
+    
+    
+}
+
+.modal {
+    height:auto;
 }

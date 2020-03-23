@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
   <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
@@ -16,6 +17,8 @@
     <link rel="stylesheet" href="style.css">
       <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+    
+      
 
     <title>Bestellliste</title>
   </head>
@@ -42,7 +45,7 @@
                 <div class="row">
                         <div class="col-12">
                             <div class="info-box">
-                                <textarea class="kw-input" name="wunsch" placeholder="- Haselnüsse 200g, ..." id="wunsch"></textarea>
+                                <textarea class="kw-input" name="wunsch" placeholder="" id="wunsch"></textarea>
                             </div>
                         </div>
                 </div>
@@ -120,7 +123,7 @@
                 <div class="row">
                     <div class="col-12" style="margin-top: 20px;">
                         <div class="info-box">
-                            <input type="text" name="telefon" placeholder="z.B: +43..." class="k-input" id="telefonnummer">
+                            <input type="text" name="telefon" placeholder="" class="k-input" id="telefonnummer">
                         </div>
                     </div>
                     
@@ -144,14 +147,14 @@
                     <div class="row" id="time" style="display: none;">
                     <div class="col-lg-6 col-md-12">
                         <div class="info-box">
-                            <h5 class="header-k">Präferierte Lieferzeit:</h5>
-                            <input type="time" name="lieferzeit" placeholder="" class="k-input" style="margin-top: 20px;" id="lieferzeit">
+                            <h5 class="header-k">Präferierte Zeit:</h5>
+                            <input type="text" name="lieferzeit" placeholder="" class="timepicker kw-input" style="margin-top: 0;height: 50px;" id="lieferzeit">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="info-box">
                             <h5 class="header-k">Anmerkung (Optional)</h5>
-                                <textarea class="kw-input" name="anmerkungen" placeholder="" style="height: auto; margin:0;" id="anmerkung"></textarea>
+                                <textarea class="kw-input" name="anmerkungen" placeholder="" style="height: 50px; margin:0;" id="anmerkung"></textarea>
                         </div>
                     </div>
                     
@@ -195,7 +198,8 @@
       
       
       <script>
-       
+        
+        
         
         </script>
       
@@ -207,6 +211,12 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="script.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      
+      <script>
+        var timer = document.querySelector('.timepicker');
+          M.Timepicker.init(timer, {});
+      </script>
 
   </body>
 </html>

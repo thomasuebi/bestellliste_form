@@ -19,7 +19,8 @@ var userId = url.searchParams.get("id");
 var database = firebase.firestore();
 
 
-var docRef = database.collection("forms").doc(userId);
+var docRef = database.collection("forms").doc("Bln8YMP5O3dy7o6HEqL0ISY4NNo1"
+);
 
 
 async function fire() {
@@ -143,6 +144,9 @@ async function fire() {
     var prices = [];
     
     for(var a = 0; a < priceTags.length; a++) {
+        if(priceTags[a].innerHTML == "" || priceTags[a].innerHTML == " ") {
+            prices.push(parseFloat("0"))
+        }
         prices.push(parseFloat(priceTags[a].innerHTML.replace(',','.').replace(' ','')));
     };
     
@@ -406,7 +410,10 @@ function validDate() {
 var radio1 = document.getElementById('radio1');
 radio1.addEventListener('click', function() {
     if(radio1.checked) {
-        document.getElementById('time').style.display = "none";
+        document.getElementById('time').style.display = "flex";
+    }
+    else {
+        document.getElementById('time').style.display = "flex";
     }
 });
 
@@ -498,17 +505,16 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                     "agb": agb.checked
             };
             
-            if(zustellung == "Lieferung") {
-                var lieferzeit = document.getElementById('lieferzeit')
-                var anmerkung = document.getElementById('anmerkung');
-                if(lieferzeit.value != "" ) {
-                    kontaktAr.lieferzeit = lieferzeit.value;
-                }
-                if(anmerkung.value != "") {
-                    kontaktAr.anmerkung = anmerkung.value;   
-                }
-                
+            
+            var lieferzeit = document.getElementById('lieferzeit')
+            var anmerkung = document.getElementById('anmerkung');
+            if(lieferzeit.value != "" ) {
+                kontaktAr.lieferzeit = lieferzeit.value;
             }
+            if(anmerkung.value != "") {
+                kontaktAr.anmerkung = anmerkung.value;   
+            }
+                
             var wunsch = document.getElementById('wunsch');
             if(wunsch.value != "") {
                 kontaktAr.wunsch = wunsch.value;
@@ -804,6 +810,17 @@ function empty() {
     
     
    validDate();
+   document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.timepicker');
+    var instances = M.Timepicker.init(elems, options);
+       var instance = M.TimePicker.getInstance(elem);
+    instance.open();
+  });
+    
+    var allInputs = document.getElementsByTagName('input');
+    for(var i = 0; i < allInputs.length; i++) {
+        allInputs[i].classList += " browser-default";
+    }
     
     
 }
