@@ -516,6 +516,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 kontaktAr.wunsch = wunsch.value;
             }
             
+            //check ob das doc existiert, wenn ja dann update
             database.collection("orders").add({
                 formId: userId,
                 data: dataAr,
@@ -525,16 +526,22 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 var email = {email:userEmail, warenkorb:dataAr, kontaktdaten:kontaktAr}
                 var json = JSON.stringify(email);
                 
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "https://www.bestellliste.com/functions/sendmail.php");
-                xhr.setRequestHeader("Content-type", "application/json")
-                xhr.send(json);
-                console.log("ok")
+                function xhr() {
+                    var xhr = new XMLHttpRequest();
+                
+                    xhr.open("POST", "https://www.bestellliste.com/functions/sendmail.php");
+                    xhr.setRequestHeader("Content-type", "application/json")
+                    xhr.send(json);
+                }
+                xhr().then(function() {
+                    console.log("ok")
+                    form.submit()
+                });
+                
             });
             
             
             
-          form.submit();
         }
         
         
