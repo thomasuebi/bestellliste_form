@@ -19,7 +19,8 @@ var userId = url.searchParams.get("id");
 var database = firebase.firestore();
 
 
-var docRef = database.collection("forms").doc(userId);
+var docRef = database.collection("forms").doc("Bln8YMP5O3dy7o6HEqL0ISY4NNo1"
+);
 
 
 async function fire() {
@@ -155,7 +156,7 @@ async function fire() {
         var pID,pTag,inner,d,innerResult;
         if(elem.value > 0) {
             elem.previousElementSibling.style.pointerEvents = "all";
-            elem.previousElementSibling.style.color = "#435757"
+            elem.previousElementSibling.style.color = "#435757";
         }
         else {
             elem.previousElementSibling.style.pointerEvents = "none";
@@ -163,7 +164,9 @@ async function fire() {
             pID = 'p-'.concat(elem.id);
             pTag = document.getElementById(pID);
             innerResult = prices[parseInt(elem.id) - 1];
-            pTag.innerHTML = innerResult.toFixed(2); 
+            pTag.innerHTML = innerResult.toFixed(2);
+            var checkbox = document.getElementById('item'.concat(elem.id))
+            checkbox.checked = false;
         }
     }
     
@@ -322,6 +325,10 @@ async function fire() {
                 
                 document.getElementById('warenkorb').appendChild(parenParent);
                 sumUp();
+            }
+            else {
+                var p = this.parentElement.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling
+                p.value= "0"
             }
             
         })

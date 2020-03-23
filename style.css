@@ -212,9 +212,6 @@ input[type="text"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-input[type="text"]:disabled{
-    background-color:#435757;
-}
 
 .col-lg-2,.col-md-2,.col-sm-2,.col-xs-2 {
     padding-left: 0;
@@ -484,7 +481,7 @@ input[type="date"] {
 }
 
 @media (max-width: 740px) {
-    label {
+    label:not(.date,.la) {
         display: block;
         position: relative;
         padding: 15px 0 15px 0px;
