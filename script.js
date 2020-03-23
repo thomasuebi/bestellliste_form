@@ -20,7 +20,7 @@ var userId = url.searchParams.get("id");
 var database = firebase.firestore();
 
 
-var docRef = database.collection("forms").doc(userId);
+var docRef = database.collection("forms").doc("FIDOuIyTrQYNDhJKzhf7vly4t1j2");
 
 
 async function fire() {
@@ -116,7 +116,14 @@ async function fire() {
                     p1.style.marginTop = "20%";
                     p1.style.display = "inline";
                     p1.classList = "price";
-                    p1.innerHTML = objects[obj]['products'][product]['price'];
+                    if(objects[obj]['products'][product]['price'] == "" || objects[obj]['products'][product]['price'] == " ") {
+                        p1.innerHTML = "0.00";
+                    }
+                    else {
+                        var ip = parseFloat(objects[obj]['products'][product]['price'])
+                        p1.innerHTML = ip.toFixed(2);
+                    }
+                    
 
                     var p2 = document.createElement('p');
                     p2.style.display = "inline";
@@ -185,6 +192,9 @@ async function fire() {
                 }
                
                 check(p);
+                var idN = this.id;
+                
+                
                 var div = document.createElement('div');
                 var button = document.createElement('button');
                 button.innerHTML = "x";
@@ -333,6 +343,11 @@ async function fire() {
             else {
                 var p = this.parentElement.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling
                 p.value= "0"
+                var thisId = this.id;
+                var nums = document.querySelectorAll('#'.concat(thisId));
+                if(nums.length > 1) {
+                   nums[1].nextElementSibling.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.click()
+                }
             }
             
         })
@@ -372,7 +387,7 @@ async function fire() {
            summe.classList = "mob";
            
            var eur = document.createElement('h5');
-           eur.innerHTML = '&euro;/EUR';
+           eur.innerHTML = 'EUR';
            eur.id = 'eur';
            eur.style.marginTop = '4%';
            eur.style.textAlign = 'right';
@@ -446,9 +461,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 if(korbEl[i].nodeType == Node.ELEMENT_NODE) {
                     console.log(1);
                     var name = korbEl[i].firstElementChild.lastElementChild.innerHTML;
-                    console.log(name);
                     var price = korbEl[i].lastElementChild.previousElementSibling.firstElementChild.firstElementChild.innerHTML;
-                    console.log(price);
                     var stücke = korbEl[i].firstElementChild.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling.value;
                     dataAr.push({
                                 "name": name,
@@ -532,6 +545,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                     xhr.open("POST", "https://www.bestellliste.com/functions/sendmail.php");
                     xhr.setRequestHeader("Content-type", "application/json")
                     xhr.send(json);
+                    return "ok";
                 }
                 xhr().then(function() {
                     console.log("ok")
