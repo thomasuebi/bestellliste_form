@@ -1,3 +1,4 @@
+
 // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyBMRmd0qVwZlNKxddN71lpHAGgOMrt-7wc",
@@ -40,6 +41,7 @@ async function fire() {
     var counter = 0;
     var counter1 = 0;
     var objects = data['data'];
+    var userEmail = data['email'];
     for(obj in objects) {
         if(objects[obj]['name']) {
             counter = counter + 1;
@@ -519,8 +521,15 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 data: dataAr,
                 kontakdaten: kontaktAr
             
-            }).then(function() {
-                form.submit();
+            }).then(function() {            
+                var email = {email:userEmail, warenkorb:dataAr, kontaktdaten:kontaktAr}
+                var json = JSON.stringify(email);
+                
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "https://www.bestellliste.com/functions/sendmail.php");
+                xhr.setRequestHeader("Content-type", "application/json")
+                xhr.send(json);
+                
             });
             
         }
