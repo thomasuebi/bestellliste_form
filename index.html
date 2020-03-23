@@ -213,11 +213,76 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       
       <script>
+          function validDate() {
+                var today = new Date();
+                today.setDate(today.getDate() + 2);
+                var tod = today.toISOString().split('T')[0];
+                return tod;
+            }
+          
         var timer = document.querySelector('.timepicker');
           M.Timepicker.init(timer, {});
           
         var dater = document.querySelector('.datepicker');
-        M.Datepicker.init(dater, {});
+        var date = validDate();
+            M.Datepicker.init(dater, {format:'d.m.yyyy', firstDay: 1, i18n:{
+                                     months:[
+                                          'Jänner',
+                                          'Februar',
+                                          'März',
+                                          'April',
+                                          'Mai',
+                                          'Juni',
+                                          'July',
+                                          'August',
+                                          'September',
+                                          'Oktober',
+                                          'November',
+                                          'Dezember'
+                                        ],
+                                      monthsShort:[
+                                          'Jan',
+                                          'Feb',
+                                          'Mär',
+                                          'Apr',
+                                          'Mai',
+                                          'Jun',
+                                          'Jul',
+                                          'Aug',
+                                          'Sep',
+                                          'Okt',
+                                          'Nov',
+                                          'Dez'
+                                        ],
+                                      weekdays:[
+                                          'Sonntag',
+                                          'Montag',
+                                          'Dienstag',
+                                          'Mittwoch',
+                                          'Donnerstag',
+                                          'Freitag',
+                                          'Samstag'
+                                        ],
+                                      weekdaysShort:[
+                                          'So',
+                                          'Mo',
+                                          'Di',
+                                          'Mi',
+                                          'Do',
+                                          'Fr',
+                                          'Sa'
+                                        ],
+                                      weekdaysAbbrev:[
+                                          'So',
+                                          'Mo',
+                                          'Di',
+                                          'Mi',
+                                          'Do',
+                                          'Fr',
+                                          'Sa'
+                                        ]
+  
+                                     }});
       </script>
 
   </body>

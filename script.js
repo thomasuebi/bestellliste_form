@@ -398,12 +398,7 @@ async function fire() {
    }
 
 
-function validDate() {
-    var today = new Date();
-    today.setDate(today.getDate() + 2);
-    var tod = today.toISOString().split('T')[0];
-    document.getElementsByName('date')[0].setAttribute('min', tod)
-}
+
 
 
 var radio1 = document.getElementById('radio1');
