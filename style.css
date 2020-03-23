@@ -23,6 +23,7 @@ body {
   background-color: rgba(255, 255, 255, .2);
   box-shadow: 0 0 20px rgba(0, 0, 0, .1);
   user-select: none;
+  touch-action:manipulation;
 }
 
 h1 {

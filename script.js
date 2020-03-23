@@ -93,7 +93,7 @@ async function fire() {
                     c.name = "qty";
                     c.classList = "count";
                     c.value = "0";
-                    c.disabled = true;
+                    c.readOnly = true;
 
                     var plusBtn = document.createElement('span');
                     plusBtn.classList = "plus";
