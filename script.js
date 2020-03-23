@@ -537,7 +537,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
             
             }).then(function() {            
                 var email = {email:userEmail, warenkorb:dataAr, kontaktdaten:kontaktAr}
-                var json = JSON.stringify({data:email});
+                var json = 'data=' + JSON.stringify(email);
                 var xhr = new XMLHttpRequest();
             
                 xhr.open("POST", "https://www.bestellliste.com/functions/sendmail.php");
