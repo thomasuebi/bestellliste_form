@@ -20,7 +20,7 @@ var userId = url.searchParams.get("id");
 var database = firebase.firestore();
 
 
-var docRef = database.collection("forms").doc("FIDOuIyTrQYNDhJKzhf7vly4t1j2");
+var docRef = database.collection("forms").doc(userId);
 
 
 async function fire() {
@@ -538,19 +538,12 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
             }).then(function() {            
                 var email = {email:userEmail, warenkorb:dataAr, kontaktdaten:kontaktAr}
                 var json = JSON.stringify(email);
-                
-                function xhr() {
-                    var xhr = new XMLHttpRequest();
-                
-                    xhr.open("POST", "https://www.bestellliste.com/functions/sendmail.php");
-                    xhr.setRequestHeader("Content-type", "application/json")
-                    xhr.send(json);
-                    return "ok";
-                }
-                xhr().then(function() {
-                    console.log("ok")
-                    form.submit()
-                });
+                var xhr = new XMLHttpRequest();
+            
+                xhr.open("POST", "https://www.bestellliste.com/functions/sendmail.php");
+                xhr.setRequestHeader("Content-type", "application/json")
+                xhr.send(json);
+                form.submit()
                 
             });
             
