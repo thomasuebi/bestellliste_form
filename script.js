@@ -93,6 +93,7 @@ async function fire() {
                     c.name = "qty";
                     c.classList = "count";
                     c.value = "0";
+                    c.disabled = true;
 
                     var plusBtn = document.createElement('span');
                     plusBtn.classList = "plus";
@@ -513,15 +514,11 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 kontakdaten: kontaktAr
             
             }).then(function() {
-            console.log("Document successfully written!");
+                form.submit();
             });
             
         }
         
-        
-        
-        
-        //dann form.submit() aber zuerst warten bis das dokument geschrieben wurde
         
     }
     else{
@@ -801,6 +798,8 @@ function empty() {
     
     
    validDate();
+    
+    
 }
 
 fire();
