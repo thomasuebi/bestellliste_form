@@ -1,4 +1,3 @@
-
 // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyBMRmd0qVwZlNKxddN71lpHAGgOMrt-7wc",
@@ -62,7 +61,7 @@ async function fire() {
                     row.classList = 'row';
 
                     var col1 = document.createElement('div');
-                    col1.classList = 'col-lg-7 col-md-6 col-sm-5 col-6'
+                    col1.classList = 'col-lg-7 col-md-6 col-sm-5 col-12'
                     var input = document.createElement('input');
                     input.id = 'item'.concat(counter1)
                     input.type = "checkbox";
@@ -70,13 +69,14 @@ async function fire() {
                     var label = document.createElement('label');
                     label.setAttribute('for','item'.concat(counter1))
                     label.innerHTML = objects[obj]['products'][product]['name'];
+                    label.classList = "name";
 
                     col1.appendChild(input);
                     col1.appendChild(label);
                     row.appendChild(col1);
 
                     var col2 = document.createElement('div');
-                    col2.classList = "col-lg-3 col-md-3 col-sm-3 col-2";
+                    col2.classList = "col-lg-3 col-md-3 col-sm-3 col-5";
                     var qty = document.createElement('div');
                     qty.classList = "qty"
 
@@ -105,7 +105,7 @@ async function fire() {
                     row.appendChild(col2);
 
                     var col3 = document.createElement('div');
-                    col3.classList = "col-lg-2 col-md-2 col-sm-2 col-2";
+                    col3.classList = "col-lg-2 col-md-2 col-sm-2 col-5";
                     var tex = document.createElement('div');
                     tex.classList = "text"
                     var p1 = document.createElement('p');
@@ -317,7 +317,7 @@ async function fire() {
                 
                 
                 parenParent.appendChild(div);
-                parenParent.firstChild.nextElementSibling.classList = "col-lg-2 col-md-3 col-sm-3 col-2";
+                parenParent.firstChild.nextElementSibling.classList = "col-lg-2 col-md-3 col-sm-3 col-5";
                 
                 document.getElementById('warenkorb').appendChild(parenParent);
                 sumUp();
@@ -426,7 +426,103 @@ document.getElementById('agb').addEventListener('change', function() {
 var submit = document.getElementById('submitbtn').addEventListener('click', function() {
     var form = document.getElementById('form');
     if(empty()) {
-        form.submit();
+        //firebase create order
+        var korb = document.getElementById('warenkorb');
+        var korbEl = korb.childNodes;
+        console.log(korbEl[2]);
+        var dataAr = [];
+        if(korbEl.length != 0) {
+            for(i = 0; i < korbEl.length; i++) {
+                if(korbEl[i].nodeType == Node.ELEMENT_NODE) {
+                    console.log(1);
+                    var name = korbEl[i].firstElementChild.lastElementChild.innerHTML;
+                    console.log(name);
+                    var price = korbEl[i].lastElementChild.previousElementSibling.firstElementChild.firstElementChild.innerHTML;
+                    console.log(price);
+                    var stücke = korbEl[i].firstElementChild.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling.value;
+                    dataAr.push({
+                                "name": name,
+                                "gesamtpreis": price,
+                                "stückzahl" :  stücke
+                            });
+                }
+            }
+            console.log(dataAr);
+            
+            
+            var vorname = document.getElementById('vorname');
+            var nachname = document.getElementById('nachname');
+            var email = document.getElementById('email');
+            var straße = document.getElementById('straße');
+            var stadt = document.getElementById('stadt');
+            var postleitzahl = document.getElementById('postleitzahl');
+            var gemeinde = document.getElementById('gemeinde');
+            var telefon = document.getElementById('telefonnummer');
+            var agb = document.getElementById('agb');
+            
+            
+            var wunschtermin = document.getElementById('dateofbirth');
+            var zustellung = document.getElementsByName('radio1');
+            for(var t = 0; t < zustellung.length; t++) {
+                if(zustellung[t].checked) {
+                    zustellung = zustellung[t].value;
+                }
+            }
+            
+            var zahlung = document.getElementsByName('radio2');
+            for(var t = 0; t < zahlung.length; t++) {
+                if(zahlung[t].checked) {
+                    zahlung = zahlung[t].value;
+                }
+            }
+            
+            var kontaktAr = {
+                    "vorname": vorname.value,
+                    "nachname": nachname.value,
+                    "email": email.value,
+                    "straße": straße.value,
+                    "stadt": stadt.value,
+                    "postleitzahl": postleitzahl.value,
+                    "gemeinde": gemeinde.value,
+                    "wunschtermin": wunschtermin.value,
+                    "telefonnummer": telefon.value,
+                    "zustellung": zustellung,
+                    "zahlung": zahlung,
+                    "agb": agb.checked
+            };
+            
+            if(zustellung == "Lieferung") {
+                var lieferzeit = document.getElementById('lieferzeit')
+                var anmerkung = document.getElementById('anmerkung');
+                if(lieferzeit.value != "" ) {
+                    kontaktAr.lieferzeit = lieferzeit.value;
+                }
+                if(anmerkung.value != "") {
+                    kontaktAr.anmerkung = anmerkung.value;   
+                }
+                
+            }
+            var wunsch = document.getElementById('wunsch');
+            if(wunsch.value != "") {
+                kontaktAr.wunsch = wunsch.value;
+            }
+            
+            database.collection("orders").add({
+                formId: userId,
+                data: dataAr,
+                kontakdaten: kontaktAr
+            
+            }).then(function() {
+            console.log("Document successfully written!");
+            });
+            
+        }
+        
+        
+        
+        
+        //dann form.submit() aber zuerst warten bis das dokument geschrieben wurde
+        
     }
     else{
         var hs = form.getElementsByTagName('h5');

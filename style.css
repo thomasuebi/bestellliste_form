@@ -224,11 +224,17 @@ input[type="text"]:disabled{
 }
 
 
-.col-lg-3,.col-md-3,.col-sm-3 {
+.col-lg-3,.col-md-3 {
     padding-left: 0;
     padding-right: 0;
     border-top: 1px dashed #fff;
 }
+
+.col-sm-3 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .col-lg-7 {
     padding-right: 0;
 }
@@ -462,7 +468,22 @@ input[type="date"] {
     background: #5b7575;
 }
 
-@media (max-width: 575px) {
+
+@media (max-width: 880px) {
+    .qty {
+        text-align: center;
+    }
+}
+
+
+
+@media (min-width: 580px) {
+    .col-5 {
+        border-top: 1px dashed #fff!important;
+    }
+}
+
+@media (max-width: 740px) {
     label {
         display: block;
         position: relative;
@@ -476,63 +497,21 @@ input[type="date"] {
         font-size: 15px;
         padding-right: 5px;
     }
-    
     .qty {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        text-align: right;
-        width: 5%;
+        text-align: left;
+        margin-bottom: 15px;
+        margin-left: 5px;
+        
     }
-    
-    .qty .minus {
-        cursor: pointer;
-        display: inline-block;
-        vertical-align: top;
-        color: #435757;
-        width: 30px;
-        height: 30px;
-        font: 28px/1 Arial,sans-serif;
-        text-align: center;
-        border-radius: 4px 4px 0 0;
-        background-clip: padding-box;
-        background-color: white;
-        border: 1px solid grey;
-        border-width: thin;
-    }
-    
-    .qty .plus {
-        cursor: pointer;
-        display: inline-block;
-        vertical-align: top;
-        color: #435757;
-        width: 30px;
-        height: 30px;
-        font: 30px/1 Arial,sans-serif;
-        text-align: center;
-        border-radius: 0 0 4px 4px;
+  
+    .col-4, .col-8,.col-7, .col-6, .col-5 {
+        padding-left: 0;
         padding-right: 0;
-        background-color: white;
-        border: 1px solid grey;
-        border-width: thin;
+        border-top: none;
     }
     
-    .qty .count {
-        color: #000;
-        display: inline-block;
-        vertical-align: top;
-        font-size: 16px;
-        line-height: 30px;
-        padding: 0 2px;
-        width: 30px;
-        height: 30px;
-        border-right: 1px solid grey;
-        border-left: 1px solid grey;
-        border-width: thin;
-        font-family: 'Montserrat', 'sans-serif';
-    }
     
     .text {
-        margin-top: 43px;
         margin-left: -5px;
         width: 140%;
         overflow-wrap: break-word;
@@ -552,9 +531,7 @@ input[type="date"] {
         border-radius: 4px;
         color: #435757;
         background: rgba(255,255,255,0.5);
-        margin-top: 40px;
         padding: 4px;
-        margin-left: 10px;
     }
     
     .price {
