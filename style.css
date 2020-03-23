@@ -164,6 +164,23 @@ input[type="checkbox"]:checked + label::before {
     border-width: thin;
     font-family: 'Montserrat', 'sans-serif';
 }
+
+.qty .count:disabled {
+    color: #000;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
+    line-height: 30px;
+    padding: 0 2px;
+    width: 35px;
+    height: 30px;
+    text-align: center;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-width: thin;
+    font-family: 'Montserrat', 'sans-serif';
+}
+
 .qty .plus {
     cursor: pointer;
     display: inline-block;
