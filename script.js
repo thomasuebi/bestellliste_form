@@ -19,7 +19,8 @@ var userId = url.searchParams.get("id");
 var database = firebase.firestore();
 
 
-var docRef = database.collection("forms").doc(userId);
+var docRef = database.collection("forms").doc("Bln8YMP5O3dy7o6HEqL0ISY4NNo1"
+);
 
 
 async function fire() {

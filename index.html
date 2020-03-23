@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="style.css">
       <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+      <script data-require="jquery@1.12.4" data-semver="1.12.4" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     
       
 
@@ -220,8 +221,13 @@
                 return tod;
             }
           
-        var timer = document.querySelector('.timepicker');
-          M.Timepicker.init(timer, {});
+        // Code goes here
+
+          jQuery(document).ready(function(){
+            jQuery('.timepicker').timepicker({
+              twelveHour: false
+            });
+          });
           
         var dater = document.querySelector('.datepicker');
         var date = validDate();
