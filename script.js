@@ -809,18 +809,11 @@ function empty() {
     
     
    validDate();
-   document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.timepicker');
-    var instances = M.Timepicker.init(elems, options);
-       var instance = M.TimePicker.getInstance(elem);
-    instance.open();
-  });
     
     var allInputs = document.getElementsByTagName('input');
     for(var i = 0; i < allInputs.length; i++) {
         allInputs[i].classList += " browser-default";
     }
-    
     
 }
 

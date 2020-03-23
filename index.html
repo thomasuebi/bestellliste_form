@@ -115,8 +115,7 @@
                 
                 <h2 class="done" aria-hidden="true">Wunschtermin</h2>
                 <div class="row">
-                    <label class="date" for="wunschtermin">Ausgewählt:</label>
-                    <input type="date" name="date" id="dateofbirth">
+                    <input type="text" name="date" id="dateofbirth" class="datepicker k-input" style="margin-top: 0;height: 50px;margin-left: 15px;margin-right: 15px;">
                 </div>
                 
                 <h2 class="done" aria-hidden="true">Telefonnummer</h2>
@@ -216,6 +215,9 @@
       <script>
         var timer = document.querySelector('.timepicker');
           M.Timepicker.init(timer, {});
+          
+        var dater = document.querySelector('.datepicker');
+        M.Datepicker.init(dater, {});
       </script>
 
   </body>

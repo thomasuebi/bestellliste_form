@@ -266,7 +266,7 @@ input[type="text"]::-webkit-inner-spin-button {
 
 .k-input {
     border:none;
-    border-bottom: 2px solid rgba(255,255,255,0.7);
+    border-bottom: 2px solid rgba(114, 116, 120, 0.7);
     border-width: thin;
     background-color: rgba(255,255,255,0.0);
     width: 100%;
@@ -274,7 +274,7 @@ input[type="text"]::-webkit-inner-spin-button {
 
 .kw-input {
     border:none;
-    border-bottom: 3px solid rgba(255,255,255,0.7);
+    border-bottom: 3px solid rgba(114, 116, 120, 0.7);
     border-width: thin;
     background-color: rgba(255,255,255,0.0);
     width: 100%;
