@@ -986,10 +986,10 @@ var inputFields = [];
     }
     
     
-    var allInputs = document.getElementsByTagName('input');
+    /*var allInputs = document.getElementsByTagName('input');
     for(var i = 0; i < allInputs.length; i++) {
         allInputs[i].classList += " browser-default";
-    }
+    }*/
     
     
 }
