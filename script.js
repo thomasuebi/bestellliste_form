@@ -20,7 +20,7 @@ var userId = url.searchParams.get("id");
 var database = firebase.firestore();
 
 
-var docRef = database.collection("forms").doc(userId);
+var docRef = database.collection("forms").doc("tAd1XsvIB3aRxwWpg1j2iY7vSo72");
 
 async function fire() {
     
@@ -849,6 +849,8 @@ function empty() {
     for(var i = 0; i < allInputs.length; i++) {
         allInputs[i].classList += " browser-default";
     }
+  
+    
     
 }
 

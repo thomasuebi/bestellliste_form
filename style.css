@@ -10,8 +10,8 @@ html {
 
 body {
   margin: 20px;
-  color: #435757;
-  background: linear-gradient(-20deg, #d0b782 20%, #a0cecf 80%);
+  color: #333;
+    background: transparent;
   font: 500 1.2em/1.2 'Roboto', sans-serif;
     
 }
@@ -19,7 +19,7 @@ body {
 .container {
   width: 75%;
   margin: 0 auto;
-  border-top: 5px solid #435757;
+  border-top: 5px solid #333;
   background-color: rgba(255, 255, 255, .2);
   box-shadow: 0 0 20px rgba(0, 0, 0, .1);
   user-select: none;
@@ -29,9 +29,10 @@ body {
 h1 {
   margin: 0;
   padding: 20px;
-  background-color: rgba(255, 255, 255, .4);
+  background-color: rgba(0, 0, 0, .7);
   font-size: 1.8em;
   text-align: center;
+    color: #fff;
 }
 
 .items {
@@ -46,7 +47,7 @@ h1 {
   padding: 10px 0;
   font-size: 1.2em;
   text-align: left;
-  border-bottom: 2px solid #435757;
+  border-bottom: 2px solid #333;
   display: table;
   margin-top:10px;
     
@@ -64,7 +65,7 @@ h2::before {
   bottom: 10px;
   left: -15px;
   width: 5px;
-  background-color: #435757;
+  background-color: #333;
 }
 
 h2::after {
@@ -89,14 +90,14 @@ label {
   display: block;
   position: relative;
   padding: 15px 0 15px 45px;
-  border-top: 1px dashed #fff;
+  border-top: 1px dashed #333;
   cursor: pointer;
   animation: undone .5s;
   text-align: left;
   margin-left: 10px;
     overflow-wrap: break-word;
    font-size: 1.3rem;
-  color: #435757;
+  color: #333;
 }
 
 label:not[.radios]::before {
@@ -186,7 +187,7 @@ input[type="checkbox"]:checked + label::before {
     cursor: pointer;
     display: inline-block;
     vertical-align: top;
-    color: #435757;
+    color: #333;
     width: 30px;
     height: 30px;
     font: 30px/1 Arial,sans-serif;
@@ -201,7 +202,7 @@ input[type="checkbox"]:checked + label::before {
     cursor: pointer;
     display: inline-block;
     vertical-align: top;
-    color: #435757;
+    color: #333;
     width: 30px;
     height: 30px;
     font: 28px/1 Arial,sans-serif;
@@ -236,7 +237,7 @@ input[type="text"]::-webkit-inner-spin-button {
 .col-lg-2,.col-md-2,.col-sm-2,.col-xs-2 {
     padding-left: 0;
     padding-right: 0;
-    border-top: 1px dashed #fff;
+    border-top: 1px dashed #333;
     
 }
 
@@ -244,7 +245,7 @@ input[type="text"]::-webkit-inner-spin-button {
 .col-lg-3,.col-md-3 {
     padding-left: 0;
     padding-right: 0;
-    border-top: 1px dashed #fff;
+    border-top: 1px dashed #333;
 }
 
 .col-sm-3 {
@@ -309,15 +310,15 @@ input[type="text"]::-webkit-inner-spin-button {
 
 .kw-input:focus {
     outline: none;
-    border-bottom: 1px solid #435757;
-    color: #435757;
+    border-bottom: 1px solid #333;
+    color: #333;
 }
 
 
 input[type="text"]:focus {
     outline: none;
-    color:#435757;
-    border-bottom: 1px solid #435757;
+    color:#333;
+    border-bottom: 1px solid #333;
     transform-origin: 0% 50%;
 }
 
@@ -351,6 +352,8 @@ input[type="radio"] {
       overflow: hidden;
       margin-left: 0;
       border-top: none;
+      border-radius: 7px;
+      border: 1px solid;
     
 }
       
@@ -359,7 +362,7 @@ input[type="radio"] {
         height: 10px;
         border-radius: 50%;
         content: '';
-        background-color: rgba(255,255,255,0.6);
+        background-color: rgba(0,0,0,0.8);
         position: absolute;
         left: 50%;
         top: 50%;
@@ -390,7 +393,7 @@ input[type="radio"] {
 
 
 .inputGroup input:checked ~ label {
-      color: #435757;
+      color: #fff;
 }
 .inputGroup input:checked ~ label:before {
         transform: translate(-50%, -50%) scale3d(56, 56, 1);
@@ -398,8 +401,8 @@ input[type="radio"] {
 }
 
 .inputGroup input:checked ~ label:after {
-        background-color: #435757;
-        border-color: #435757;
+        background-color: #333;
+        border-color: #fff;
 }
 
 .inputGroup input {
@@ -470,7 +473,7 @@ input[type="date"] {
 }
 
 .abschick {
-    background: #435757;
+    background: #333;
     color:white;
     padding: 20px;
     text-align: center;
@@ -485,6 +488,20 @@ input[type="date"] {
     background: #5b7575;
 }
 
+.agb-a {
+    display: block;
+    position: relative;
+    padding: 30px;
+    border-top: 1px dashed #333;
+    cursor: pointer;
+    animation: undone .5s;
+    text-align: left;
+    margin-left: 10px;
+    overflow-wrap: break-word;
+    font-size: 1.3rem;
+    color: #333;
+}
+
 
 @media (max-width: 880px) {
     .qty {
@@ -497,7 +514,7 @@ input[type="date"] {
 
 @media (min-width: 580px) {
     .col-5 {
-        border-top: 1px dashed #fff!important;
+        border-top: 1px dashed #333!important;
     }
 }
 
@@ -506,7 +523,7 @@ input[type="date"] {
         display: block;
         position: relative;
         padding: 15px 0 15px 0px;
-        border-top: 1px dashed #fff;
+        border-top: 1px dashed #333;
         cursor: pointer;
         animation: undone .5s;
         text-align: left;
@@ -562,7 +579,7 @@ input[type="date"] {
     h1 {
         margin: 0;
         padding: 20px;
-        background-color: rgba(255, 255, 255, .4);
+        background-color: rgba(0, 0, 0, .7);
         font-size: 1.4em;
         text-align: center;
     } 
