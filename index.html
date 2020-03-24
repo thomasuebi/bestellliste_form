@@ -27,6 +27,8 @@
       <div class="container" id="cont">
       <h1>Bestellliste</h1>
       <h4 style="margin-top: 10px;margin-bottom: 10px;">Wähle Sie Ihre gewünschten Produkte sowie die Menge aus: (Wichtig: Produkt anhaken, sodass es erfasst wird)</h4>
+        
+      <h4 style="margin-top: 20px;margin-bottom: 20px;display: none;" id="info"></h4>
 
       
         
@@ -57,13 +59,13 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="info-box">
                             <h5 class="header-k">Vorname</h5>
-                            <input type="text" name="vorname" placeholder="" class="k-input" id="vorname">
+                            <input type="text" name="vorname" placeholder="Vorname" class="k-input" id="vorname">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="info-box">
                             <h5 class="header-k">Nachname</h5>
-                            <input type="text" name="nachname" placeholder="" class="k-input" id="nachname">
+                            <input type="text" name="nachname" placeholder="Nachname" class="k-input" id="nachname">
                         </div>
                     </div>
                     
@@ -74,7 +76,7 @@
                     <div class="col-12">
                         <div class="info-box">
                             <h5 class="header-k">Zur Information über den Bestellstatus</h5>
-                            <input type="text" name="email" placeholder="" class="k-input" id="email">
+                            <input type="text" name="email" placeholder="example@gmail.com" class="k-input" id="email">
                         </div>
                     </div>
                     
@@ -85,19 +87,19 @@
                     <div class="col-12">
                         <div class="info-box">
                             <h5 class="header-k">Straße + Hausnummer</h5>
-                            <input type="text" name="straße" placeholder="" class="k-input" id="straße">
+                            <input type="text" name="straße" placeholder="Musterstraße 10" class="k-input" id="straße">
                     </div>
                     <div class="row">
                     <div class="col-lg-6 col-md-12">
                         <div class="info-box">
                             <h5 class="header-k">Stadt</h5>
-                            <input type="text" name="stadt" placeholder="" class="k-input" id="stadt">
+                            <input type="text" name="stadt" placeholder="Stadt" class="k-input" id="stadt">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="info-box">
                             <h5 class="header-k">Postleitzahl</h5>
-                            <input type="text" name="postleitzahl" placeholder="" class="k-input" id="postleitzahl">
+                            <input type="text" name="postleitzahl" placeholder="Postleitzahl" class="k-input" id="postleitzahl">
                         </div>
                     </div>
                     </div>
@@ -105,7 +107,7 @@
                         <div class="col-12">
                             <div class="info-box">
                                 <h5 class="header-k">Gemeinde</h5>
-                                <input type="text" name="gemeinde" placeholder="" class="k-input" id="gemeinde">
+                                <input type="text" name="gemeinde" placeholder="Gemeinde" class="k-input" id="gemeinde">
                             </div>
                         </div>
                     </div>
@@ -130,13 +132,13 @@
                 </div>
                 <h2 class="done" aria-hidden="true">Lieferung oder Abholung?</h2>
                 <div class="row">
-                    <div class="col-lg-6 col-md-12">
+                    <div class="col-lg-6 col-md-12" id="abholung" style="display: none;">
                         <div class="inputGroup">
                             <input id="radio1" name="radio1" type="radio" value="Abholung" class="radio"/>
                             <label for="radio1" class="la">Abholung</label>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12">
+                    <div class="col-lg-6 col-md-12" id="lieferung" style="display: none;">
                         <div class="inputGroup">
                             <input id="radio2" name="radio1" type="radio" value="Lieferung" class="radio"/>
                             <label for="radio2" class="la">Lieferung</label>
@@ -148,13 +150,13 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="info-box">
                             <h5 class="header-k">Präferierte Zeit:</h5>
-                            <input type="text" name="lieferzeit" placeholder="" class="timepicker kw-input" style="margin-top: 0;height: 50px;" id="lieferzeit">
+                            <input type="text" name="lieferzeit" placeholder="Hier klicken!" class="timepicker kw-input" style="margin-top: 0;height: 50px;" id="lieferzeit">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="info-box">
                             <h5 class="header-k">Anmerkung (Optional)</h5>
-                                <textarea class="kw-input" name="anmerkungen" placeholder="" style="height: 50px; margin:0;" id="anmerkung"></textarea>
+                                <textarea class="kw-input" name="anmerkungen" placeholder="Anmerkung" style="height: 50px; margin:0;" id="anmerkung"></textarea>
                         </div>
                     </div>
                     
@@ -187,7 +189,7 @@
                 </div>
                 
                 <div class="row" style="justify-content: center;">
-                    <a href="#kontaktd"><button class="abschick" type="button" id="submitbtn">Anfrage senden</button></a>
+                    <a><button class="abschick" type="button" id="submitbtn">Anfrage senden</button></a>
                 </div>
                 
             </form>

@@ -37,6 +37,38 @@ async function fire() {
     });
     
     
+    
+    
+    var rechnung = data['paymentInvoice'];
+    var bar = data['paymentCash'];
+    if(rechnung) {
+        document.getElementById('rechnung').style.display = "block";
+    }
+    if(bar) {
+        document.getElementById('bar').style.display = "block";
+    }
+    
+    var lieferung = data['delivery'];
+    var abholung = data['collection'];
+    if(lieferung) {
+        document.getElementById('lieferung').style.display = "block";
+    }
+    if(abholung) {
+        document.getElementById('abholung').style.display = "block";
+    }
+    
+    var info = data['additionalInfo']
+
+    if(info) {
+        document.getElementById('info').style.display = "block";
+        document.getElementById('info').innerHTML = "<strong>Info an den Kunden: </strong>".concat(info)
+    }
+    
+    
+    
+    
+    
+    
     var counter = 0;
     var counter1 = 0;
     var objects = data['data'];
@@ -555,20 +587,64 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
         
     }
     else{
-        
+        var scrolled = false;
+        var zustell = false;
+        var zahl = false;
+        var radioc = 0;
         for(var i = 0; i < inputFields.length; i++) {
               if(inputFields[i].type == "text"){  
                 if(!inputFields[i].value) {
                     inputFields[i].placeholder = "Dieser Eintrag fehlt!";
-                    inputFields[i].classList += " plac"  ;  
+                    inputFields[i].classList += " plac";  
+                    if(!scrolled) {
+                        document.getElementById(inputFields[i].id).scrollIntoView();
+                        scrolled = true;
+                    }
                 }
               }else if(inputFields[i].type == "radio") {
-                  if(!inputFields[i].checked) {
-                      inputFields[i].nextElementSibling.style.cssText += 'color:#ed6d68 !important';
-                  }
+                      var zustellung = document.getElementsByName('radio1');
+                        for(var t = 0; t < zustellung.length; t++) {
+                            if(zustellung[t].checked) {
+                                zustell = true;
+                            }
+                        }
+                  
+                      var zahlung = document.getElementsByName('radio2');
+                        for(var t = 0; t < zahlung.length; t++) {
+                            if(zahlung[t].checked) {
+                                zahl = true;
+                            }
+                        }
+                  
+                      radioc++;
+                      if(radioc <= 2) {
+                          if(!inputFields[i].checked && zustell == false) {
+                              inputFields[i].nextElementSibling.style.cssText += 'color:#ed6d68 !important';
+                              if(!scrolled) {
+                                document.getElementById(inputFields[i].id).scrollIntoView();
+                                  scrolled = "true"
+                              }
+
+                          }
+                      }
+                      if(radioc > 2) {
+                          if(!inputFields[i].checked && zahl == false) {
+                              inputFields[i].nextElementSibling.style.cssText += 'color:#ed6d68 !important';
+                              if(!scrolled) {
+                                document.getElementById(inputFields[i].id).scrollIntoView();
+                                  scrolled = "true"
+                              }
+
+                          }
+                      }
+                  
               }else if(inputFields[i].type == "checkbox") {
                   if(inputFields[i].checked != true) {
                     inputFields[i].nextElementSibling.style.color = "#ed6d68"
+                    if(!scrolled) {
+                        document.getElementById(inputFields[i].id).scrollIntoView();
+                        scrolled = true;
+                    }
                   }
               }
             
@@ -700,55 +776,7 @@ function add(event) {
 
 
 var inputFields = [];
-function empty() {
-    var vorname = document.getElementById('vorname');
-    var nachname = document.getElementById('nachname');
-    var email = document.getElementById('email');
-    var straße = document.getElementById('straße');
-    var stadt = document.getElementById('stadt');
-    var postleitzahl = document.getElementById('postleitzahl');
-    var gemeinde = document.getElementById('gemeinde');
-    var telefon = document.getElementById('telefonnummer');
-    
-    var radio3 = document.getElementById('radio3');
-    var radio4 = document.getElementById('radio4');
-    var agb = document.getElementById('agb');
-    var wunschtermin = document.getElementById('dateofbirth');
-    inputFields.push(vorname);
-    inputFields.push(nachname);
-    inputFields.push(email);
-    inputFields.push(straße);
-    inputFields.push(stadt);
-    inputFields.push(postleitzahl);
-    inputFields.push(gemeinde);
-    inputFields.push(telefon);
-    inputFields.push(radio3);
-    inputFields.push(radio4);
-    inputFields.push(agb);
-    inputFields.push(wunschtermin);
-    inputFields.push(radio1);
-    inputFields.push(radio2);
-    
-    if(vorname.value == "" || nachname.value == "" || email.value == "") {
-        return false;
-    }
-    else if(straße.value == "" || stadt.value == "" || postleitzahl.value == "" || gemeinde.value == "" || telefon.value == "") {
-        return false;
-    }
-    else if((radio1.checked == false) && (radio2.checked == false)){
-        return false;
-    }
-    else if((radio3.checked == false) && (radio4.checked == false)) {
-        return false;
-    }
-    else if(agb.checked == false || wunschtermin.value == "") {
-        return false;
-    }
-    else{
-        return true;
-    }
-    
-    }
+
     
     
     var minusButtons = document.getElementsByClassName('minus');
@@ -885,14 +913,8 @@ function empty() {
     
     
     
-    var rechnung = "rechnung";
-    var bar = "bar";
-    if(rechnung) {
-        document.getElementById('rechnung').style.display = "block";
-    }
-    if(bar) {
-        document.getElementById('bar').style.display = "block";
-    }
+    
+    
     
     var radios = document.getElementsByTagName('input');
     for(var i = 0; i< radios.length; i++) {
@@ -910,7 +932,66 @@ function empty() {
                 })
             }
         }
+    
     }
+    
+    
+    
+    function empty() {
+    var vorname = document.getElementById('vorname');
+    var nachname = document.getElementById('nachname');
+    var email = document.getElementById('email');
+    var straße = document.getElementById('straße');
+    var stadt = document.getElementById('stadt');
+    var postleitzahl = document.getElementById('postleitzahl');
+    var gemeinde = document.getElementById('gemeinde');
+    var telefon = document.getElementById('telefonnummer');
+    
+    var radio3 = document.getElementById('radio3');
+    var radio4 = document.getElementById('radio4');
+    var agb = document.getElementById('agb');
+    var wunschtermin = document.getElementById('dateofbirth');
+    inputFields.push(vorname);
+    inputFields.push(nachname);
+    inputFields.push(email);
+    inputFields.push(straße);
+    inputFields.push(stadt);
+    inputFields.push(postleitzahl);
+    inputFields.push(gemeinde);
+    inputFields.push(telefon);
+    inputFields.push(radio1);
+    inputFields.push(radio2);
+    inputFields.push(radio3);
+    inputFields.push(radio4);
+    inputFields.push(agb);
+    inputFields.push(wunschtermin);
+    
+    
+    if(vorname.value == "" || nachname.value == "" || email.value == "") {
+        return false;
+    }
+    else if(straße.value == "" || stadt.value == "" || postleitzahl.value == "" || gemeinde.value == "" || telefon.value == "") {
+        return false;
+    }
+    else if((radio1.checked == false) && (radio2.checked == false)){
+        return false;
+    }
+    else if((radio3.checked == false) && (radio4.checked == false)) {
+        return false;
+    }
+    else if(agb.checked == false || wunschtermin.value == "") {
+        return false;
+    }
+    else{
+        return true;
+    }
+    
+    }
+    
+    
+    
+    
+    
 }
 
 fire();
