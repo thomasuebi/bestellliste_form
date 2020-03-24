@@ -595,3 +595,13 @@ input[type="date"] {
 .modal {
     height:auto;
 }
+
+.plac::placeholder {
+    color:#ed6d68;
+    
+
+}
+
+input[type="radio"]:not(:checked) + label {
+    color: #333!important;
+}

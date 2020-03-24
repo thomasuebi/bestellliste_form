@@ -185,6 +185,7 @@ async function fire() {
     for(var b = 0; b < checkboxes.length; b++) {
         checkboxes[b].addEventListener('change', function() {
             if(this.checked) {
+                
                 var p = this.parentElement.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling
                 if(parseInt(p.value) == 0) {
                     p.value = "1";
@@ -441,6 +442,7 @@ radio2.addEventListener('click', function() {
 document.getElementById('agb').addEventListener('change', function() {
     if(this.checked) {
         this.parentElement.style.backgroundColor = "rgba(255,255,255,0.8)"
+        this.nextElementSibling.style.color = "#333";
     }
     else {
         this.parentElement.style.backgroundColor = "rgba(255,255,255,0.0)"
@@ -541,9 +543,8 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "https://www.bestellliste.com/functions/sendmail.php?data=" + json);
                 xhr.send(null);
-              
-                console.log("ok");
-                //window.location.href="/?id=".concat(userId);
+                alert("Bestellung erfolgreich abgeschickt!")
+                window.location.href="/?id=".concat(userId);
                 
             });
             
@@ -554,10 +555,25 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
         
     }
     else{
-        var hs = form.getElementsByTagName('h5');
-        for(var i = 0; i < hs.length; i++ ) {
-            hs[i].style.color = "#d64b4b";
-        } 
+        
+        for(var i = 0; i < inputFields.length; i++) {
+              if(inputFields[i].type == "text"){  
+                if(!inputFields[i].value) {
+                    inputFields[i].placeholder = "Dieser Eintrag fehlt!";
+                    inputFields[i].classList += " plac"  ;  
+                }
+              }else if(inputFields[i].type == "radio") {
+                  if(!inputFields[i].checked) {
+                      inputFields[i].nextElementSibling.style.cssText += 'color:#ed6d68 !important';
+                  }
+              }else if(inputFields[i].type == "checkbox") {
+                  if(inputFields[i].checked != true) {
+                    inputFields[i].nextElementSibling.style.color = "#ed6d68"
+                  }
+              }
+            
+        }
+        
     }
 })
 
@@ -683,7 +699,7 @@ function add(event) {
 
 
 
-
+var inputFields = [];
 function empty() {
     var vorname = document.getElementById('vorname');
     var nachname = document.getElementById('nachname');
@@ -693,10 +709,27 @@ function empty() {
     var postleitzahl = document.getElementById('postleitzahl');
     var gemeinde = document.getElementById('gemeinde');
     var telefon = document.getElementById('telefonnummer');
+    
     var radio3 = document.getElementById('radio3');
     var radio4 = document.getElementById('radio4');
     var agb = document.getElementById('agb');
-    if(vorname.value == "" || nachname.value == "" || email == "") {
+    var wunschtermin = document.getElementById('dateofbirth');
+    inputFields.push(vorname);
+    inputFields.push(nachname);
+    inputFields.push(email);
+    inputFields.push(straße);
+    inputFields.push(stadt);
+    inputFields.push(postleitzahl);
+    inputFields.push(gemeinde);
+    inputFields.push(telefon);
+    inputFields.push(radio3);
+    inputFields.push(radio4);
+    inputFields.push(agb);
+    inputFields.push(wunschtermin);
+    inputFields.push(radio1);
+    inputFields.push(radio2);
+    
+    if(vorname.value == "" || nachname.value == "" || email.value == "") {
         return false;
     }
     else if(straße.value == "" || stadt.value == "" || postleitzahl.value == "" || gemeinde.value == "" || telefon.value == "") {
@@ -708,14 +741,14 @@ function empty() {
     else if((radio3.checked == false) && (radio4.checked == false)) {
         return false;
     }
-    else if(agb.checked == false) {
+    else if(agb.checked == false || wunschtermin.value == "") {
         return false;
     }
     else{
         return true;
     }
     
-}
+    }
     
     
     var minusButtons = document.getElementsByClassName('minus');
@@ -851,6 +884,33 @@ function empty() {
   
     
     
+    
+    var rechnung = "rechnung";
+    var bar = "bar";
+    if(rechnung) {
+        document.getElementById('rechnung').style.display = "block";
+    }
+    if(bar) {
+        document.getElementById('bar').style.display = "block";
+    }
+    
+    var radios = document.getElementsByTagName('input');
+    for(var i = 0; i< radios.length; i++) {
+        if(radios[i].nodeType == Node.ELEMENT_NODE) {
+            if(radios[i].type == "radio") {
+                radios[i].addEventListener('click', function() {
+                    if(this.checked) {
+                        this.nextElementSibling.style.borderColor = "#333";
+                        this.nextElementSibling.style.color = "#fff";
+                    }
+                    else if(this.checked == false){
+                        console.log("user")
+                        this.nextElementSibling.style.color = "#333";
+                    }
+                })
+            }
+        }
+    }
 }
 
 fire();
