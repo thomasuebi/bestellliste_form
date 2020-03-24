@@ -544,7 +544,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 xhr.setRequestHeader("Content-type", "application/json")
                 xhr.send(json);
                 console.log("ok");
-                window.location.href="form.bestellliste.com/?id=".concat(userId);
+                window.location.href="/?id=".concat(userId);
                 
             });
             
