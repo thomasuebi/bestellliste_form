@@ -22,7 +22,6 @@ var database = firebase.firestore();
 
 var docRef = database.collection("forms").doc(userId);
 
-
 async function fire() {
     
     
@@ -224,6 +223,7 @@ async function fire() {
                 
                 var mBtn = parenParent.getElementsByClassName('minus')[0];
                 mBtn.onclick = function() {
+                    console.log("ja")
                     var next = this.nextElementSibling;
                     var current = next.value;
                     var pID,pTag,inner,d,innerResult;
@@ -543,7 +543,8 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 xhr.open("POST", "https://www.bestellliste.com/functions/sendmail.php");
                 xhr.setRequestHeader("Content-type", "application/json")
                 xhr.send(json);
-                form.submit()
+                console.log("ok");
+                window.location.href="index.html"
                 
             });
             
@@ -610,6 +611,7 @@ function add(event) {
         prev.value = current;
         if(document.getElementById(last2)) {
             document.getElementById(last2).value = current;
+            console.log(document.getElementById(last2))
         }
         check(prev);
         
@@ -620,6 +622,9 @@ function add(event) {
         var next = event.nextElementSibling;
         var current = next.value;
         var pID,pTag,inner,d,innerResult;
+        current = parseInt(current);
+        current--;
+        console.log(current)
         
         if(next.value != 0) {
             pID = 'p-'.concat(next.id);
@@ -627,7 +632,7 @@ function add(event) {
             inner = pTag.innerHTML;
             d = parseFloat(inner);
             if(parseInt(next.id) > 1000) {
-                var last2 = parseInt(next.id) -1000;
+                var last2 = parseInt(next.id) - 1000;
                 var innerResult = d - prices[last2 - 1];
                 pTag.innerHTML = innerResult.toFixed(2);
                 
@@ -655,14 +660,15 @@ function add(event) {
                
             }
         }
-        current = parseInt(current);
-        current--;
+        
         if(document.getElementById(last2)) {
             document.getElementById(last2).value = current;
         }
         next.value = current;
         if(next.value == 0 && parseInt(next.id) > 1000) {
-            var node = next.parentElement.parentElement.parentElement.remove();
+            var node = next.parentElement.parentElement.parentElement;
+            console.log(node);
+            node.remove();
             document.getElementById(last2).value = 0; document.getElementById(last2).parentElement.parentElement.previousElementSibling.firstElementChild.checked = false;
             check(document.getElementById(last2));
             sumUp();
@@ -716,6 +722,7 @@ function empty() {
     var minusButtons = document.getElementsByClassName('minus');
     for(var i = 0; i < minusButtons.length; i++) {
         minusButtons[i].onclick = function() {
+            console.log("ja")
             var next = this.nextElementSibling;
             var current = next.value;
             var pID,pTag,inner,d,innerResult;
@@ -738,14 +745,18 @@ function empty() {
                 else {
                     var last2 = parseInt(next.id) + 1000;
                     if(document.getElementById(last2)) {
+                        console.log("Ja")
                         var all = parseInt(next.id) + 1000;
                         var innerResult = d - prices[parseInt(next.id) - 1];
                         pTag.innerHTML = innerResult.toFixed(2);
+                        console.log(pTag)
 
                         //Anderes Element
                         pID = 'p-'.concat(all);
                         pTag = document.getElementById(pID);
+                        console.log("hier")
                         pTag.innerHTML = innerResult.toFixed(2);
+                        pTag.parentElement.parentElement.nextElementSibling.firstElementChild.click(); //remove the warenkorb item
                     }
                     else {
                         var innerResult = d - prices[parseInt(next.id) - 1];
@@ -775,15 +786,18 @@ function empty() {
         }
     }
     var plusButtons = document.getElementsByClassName('plus');
-    for(var i = 0; i < minusButtons.length; i++) {
+    for(var i = 0; i < plusButtons.length; i++) {
         plusButtons[i].onclick = function() {
             var prev = this.previousElementSibling;
             var current = prev.value;
+            current = parseInt(current);
+            current++;
             if(prev.value != 0) {
                 var pID = 'p-'.concat(prev.id);
                 var pTag = document.getElementById(pID);
                 var inner = pTag.innerHTML;
                 var d = parseFloat(inner);
+                
                 if(parseInt(prev.id) > 1000) {
                     //Element im Warenkorb
                     var last2 = parseInt(prev.id) -1000;
@@ -810,13 +824,13 @@ function empty() {
                     else {
                         var innerResult = d + prices[parseInt(prev.id) - 1];
                         pTag.innerHTML = innerResult.toFixed(2);
+                        console.log(pTag)
                     }
 
                 }
 
             }
-            current = parseInt(current);
-            current++;
+            
             prev.value = current;
             if(document.getElementById(last2)) {
                 document.getElementById(last2).value = current;
