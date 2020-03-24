@@ -606,3 +606,13 @@ input[type="date"] {
 input[type="radio"]:not(:checked) + label {
     color: #333!important;
 }
+
+
+input[type=text]:not(.browser-default){
+    background: #0000000a;
+    border-radius: 5px;
+}
+
+input[type=text]:not(.browser-default)::placeholder{
+    padding-left: 10px;   
+}
