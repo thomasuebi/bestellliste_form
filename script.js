@@ -537,23 +537,10 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
             
             }).then(function() {            
                 var email = {email:userEmail, warenkorb:dataAr, kontaktdaten:kontaktAr}
-//                 var json = 'data=' + JSON.stringify(email);
-//                 var xhr = new XMLHttpRequest();
-            
-//                 xhr.open("POST", "https://www.bestellliste.com/functions/sendmail.php");
-//                 xhr.send(json);
-              
-              
-                var http = new XMLHttpRequest();
-                var url = "https://www.bestellliste.com/functions/sendmail.php";
-                var params = 'data=' + JSON.stringify(email);
-                http.open("POST", url, true);
-
-                //Send the proper header information along with the request
-                http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                http.setRequestHeader("Content-length", params.length);
-                http.setRequestHeader("Connection", "close");
-                http.send(params);
+                var json = 'data=' + JSON.stringify(email);
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "https://www.bestellliste.com/functions/sendmail.php?data=" + json);
+                xhr.send();
               
                 console.log("ok");
                 //window.location.href="/?id=".concat(userId);
