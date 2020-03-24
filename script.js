@@ -541,7 +541,6 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 var xhr = new XMLHttpRequest();
             
                 xhr.open("POST", "https://www.bestellliste.com/functions/sendmail.php");
-                xhr.setRequestHeader("Content-type", "application/json")
                 xhr.send(json);
                 console.log("ok");
                 //window.location.href="/?id=".concat(userId);
