@@ -124,7 +124,7 @@ async function fire() {
                     c.type = "text";
                     c.id = counter1;
                     c.name = "qty";
-                    c.classList = "count";
+                    c.classList = "count browser-default";
                     c.value = "0";
                     c.readOnly = true;
 
