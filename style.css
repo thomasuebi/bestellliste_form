@@ -276,6 +276,7 @@ input[type="text"]::-webkit-inner-spin-button {
 
 .info-box {
     width: 100%;
+    margin-top: 10px;
 }
 
 .header-k {
