@@ -20,7 +20,7 @@ var userId = url.searchParams.get("id");
 var database = firebase.firestore();
 
 
-var docRef = database.collection("forms").doc(userId);
+var docRef = database.collection("forms").doc("d0aZrsH0OaQwm8hHmUv5bhTgDOk1");
 
 async function fire() {
     
@@ -848,57 +848,70 @@ var inputFields = [];
     var plusButtons = document.getElementsByClassName('plus');
     for(var i = 0; i < plusButtons.length; i++) {
         plusButtons[i].onclick = function() {
+            console.log("ja")
             var prev = this.previousElementSibling;
-            var current = prev.value;
-            current = parseInt(current);
-            current++;
-            if(prev.value != 0) {
-                var pID = 'p-'.concat(prev.id);
-                var pTag = document.getElementById(pID);
-                var inner = pTag.innerHTML;
-                var d = parseFloat(inner);
+            if(prev.value == 0) {
+                var e = new Event("change");
+                prev.parentElement.parentElement.previousElementSibling.firstElementChild.checked = true;
+                prev.parentElement.parentElement.previousElementSibling.firstElementChild.dispatchEvent(e);
+            }
+            else {
                 
-                if(parseInt(prev.id) > 1000) {
-                    //Element im Warenkorb
-                    var last2 = parseInt(prev.id) -1000;
-                    var innerResult = d + prices[last2 - 1];
-                    pTag.innerHTML = innerResult.toFixed(2);
+                var current = prev.value;
+                current = parseInt(current);
+                current++;
+                if(prev.value != 0) {
+                    var pID = 'p-'.concat(prev.id);
+                    var pTag = document.getElementById(pID);
+                    var inner = pTag.innerHTML;
+                    var d = parseFloat(inner);
 
-                    //Ausgangselement in der Liste
-                    pID = 'p-'.concat(last2);
-                    pTag = document.getElementById(pID);
-                    pTag.innerHTML = innerResult.toFixed(2);
-                }
-                else {
-                    var last2 = parseInt(prev.id) + 1000;
-                    if(document.getElementById(last2)) {
-                        var all = parseInt(prev.id) + 1000;
-                        var innerResult = d + prices[parseInt(prev.id) - 1];
+                    if(parseInt(prev.id) > 1000) {
+                        //Element im Warenkorb
+                        var last2 = parseInt(prev.id) -1000;
+                        var innerResult = d + prices[last2 - 1];
                         pTag.innerHTML = innerResult.toFixed(2);
 
-                        //Anderes Element
-                        pID = 'p-'.concat(all);
+                        //Ausgangselement in der Liste
+                        pID = 'p-'.concat(last2);
                         pTag = document.getElementById(pID);
                         pTag.innerHTML = innerResult.toFixed(2);
                     }
                     else {
-                        var innerResult = d + prices[parseInt(prev.id) - 1];
-                        pTag.innerHTML = innerResult.toFixed(2);
-                        console.log(pTag)
+                        var last2 = parseInt(prev.id) + 1000;
+                        if(document.getElementById(last2)) {
+                            var all = parseInt(prev.id) + 1000;
+                            var innerResult = d + prices[parseInt(prev.id) - 1];
+                            pTag.innerHTML = innerResult.toFixed(2);
+
+                            //Anderes Element
+                            pID = 'p-'.concat(all);
+                            pTag = document.getElementById(pID);
+                            pTag.innerHTML = innerResult.toFixed(2);
+                        }
+                        else {
+                            var innerResult = d + prices[parseInt(prev.id) - 1];
+                            pTag.innerHTML = innerResult.toFixed(2);
+                            console.log(pTag)
+                        }
+
                     }
 
                 }
+                prev.value = current;
 
-            }
+                if(document.getElementById(last2)) {
+                    document.getElementById(last2).value = current;
+                }
+                check(prev);
+
+                sumUp();
+                }
+
+
+                }
             
-            prev.value = current;
-            if(document.getElementById(last2)) {
-                document.getElementById(last2).value = current;
-            }
-            check(prev);
-
-            sumUp();
-            }
+            
     }
     
     
