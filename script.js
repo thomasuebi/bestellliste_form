@@ -786,7 +786,7 @@ var inputFields = [];
             var next = this.nextElementSibling;
             var current = next.value;
             var pID,pTag,inner,d,innerResult;
-
+            console.log(current)
             if(next.value != 0) {
                 pID = 'p-'.concat(next.id);
                 pTag = document.getElementById(pID);
@@ -816,7 +816,9 @@ var inputFields = [];
                         pTag = document.getElementById(pID);
                         console.log("hier")
                         pTag.innerHTML = innerResult.toFixed(2);
-                        pTag.parentElement.parentElement.nextElementSibling.firstElementChild.click(); //remove the warenkorb item
+                        if(current == 1) {
+                            pTag.parentElement.parentElement.nextElementSibling.firstElementChild.click(); //remove the warenkorb item
+                        }
                     }
                     else {
                         var innerResult = d - prices[parseInt(next.id) - 1];
