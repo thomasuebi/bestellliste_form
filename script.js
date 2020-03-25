@@ -594,8 +594,8 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
         for(var i = 0; i < inputFields.length; i++) {
               if(inputFields[i].type == "text"){  
                 if(!inputFields[i].value) {
-                    inputFields[i].placeholder = "Dieser Eintrag fehlt!";
-                    inputFields[i].classList += " plac";  
+                    inputFields[i].nextElementSibling.style.content = "Dieser Eintrag fehlt!";
+                    inputFields[i].nextElementSibling.classList += " plac";  
                     if(!scrolled) {
                         document.getElementById(inputFields[i].id).scrollIntoView();
                         scrolled = true;
@@ -963,6 +963,8 @@ var inputFields = [];
     var radio4 = document.getElementById('radio4');
     var agb = document.getElementById('agb');
     var wunschtermin = document.getElementById('dateofbirth');
+    console.log(agb);
+    console.log(wunschtermin);
     inputFields.push(vorname);
     inputFields.push(nachname);
     inputFields.push(email);

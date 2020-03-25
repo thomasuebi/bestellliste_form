@@ -57,25 +57,29 @@
                 <h2 class="done" aria-hidden="true">Dein Name</h2>
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
-                        <div class="info-box">
-                            <input type="text" name="vorname" placeholder="Vorname" class="k-input" id="vorname">
+                        <div class="div">
+                            <input type="text" name="vorname"  class="k-input browser-default" id="vorname" required/>
+                            <label for="vorname" class="not" title="Vorname"></label>
                         </div>
+                     </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
-                        <div class="info-box">
-                            <input type="text" name="nachname" placeholder="Nachname" class="k-input" id="nachname">
+                        <div class="div">
+                            <input type="text" name="nachname"  class="k-input browser-default" id="nachname" required/>
+                            <label for="nachname" class="not" title="Nachname"></label>
                         </div>
                     </div>
                     
-                </div>
+               
                 
                 <h2 class="done" aria-hidden="true">Email</h2>
                 <div class="row">
                     <div class="col-12">
-                        <div class="info-box">
-                            
-                            <input type="text" name="email" placeholder="example@gmail.com" class="k-input" id="email">
+                        <div class="div">
+                            <input type="text" name="email"  class="k-input browser-default" id="email" required/>
+                            <label for="email" class="not" title="E-Mail"></label>
                         </div>
+                        
                     </div>
                     
                 </div>
@@ -83,30 +87,31 @@
                 <h2 class="done" aria-hidden="true">Adresse</h2>
                 <div class="row">
                     <div class="col-12">
-                        <div class="info-box">
-                            
-                            <input type="text" name="straße" placeholder="Musterstraße 10" class="k-input" id="straße">
-                    </div>
+                        <div class="div">
+                            <input type="text" name="straße"  class="k-input browser-default" id="straße" required/>
+                            <label for="straße" class="not" title="Straße + Hausnummer"></label>
+                        </div>
+                        
                     <div class="row">
                     <div class="col-lg-6 col-md-12">
-                        <div class="info-box">
-                            
-                            <input type="text" name="stadt" placeholder="Stadt" class="k-input" id="stadt">
+                        <div class="div">
+                            <input type="text" name="stadt"  class="k-input browser-default" id="stadt" required/>
+                            <label for="stadt" class="not" title="Stadt"></label>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
-                        <div class="info-box">
-                            
-                            <input type="text" name="postleitzahl" placeholder="Postleitzahl" class="k-input" id="postleitzahl">
+                        <div class="div">
+                            <input type="text" name="postleitzahl"  class="k-input browser-default" id="postleitzahl" required/>
+                            <label for="postleitzahl" class="not" title="Postleitzahl"></label>
                         </div>
                     </div>
-                    </div>
-                    <div class="row">
+                        
                         <div class="col-12">
-                            <div class="info-box">
-                               
-                                <input type="text" name="gemeinde" placeholder="Gemeinde" class="k-input" id="gemeinde">
+                            <div class="div">
+                                <input type="text" name="gemeinde"  class="k-input browser-default" id="gemeinde" required/>
+                                <label for="gemeinde" class="not" title="Gemeinde"></label>
                             </div>
+                            
                         </div>
                     </div>
                     
@@ -116,27 +121,31 @@
                 
                 <h2 class="done" aria-hidden="true">Wunschtermin</h2>
                 <div class="row">
-                    <input type="text" name="date" id="dateofbirth" class="datepicker k-input" style="margin-top: 8px;height: 50px;margin-left: 15px;margin-right: 15px;" placeholder="Hier klicken!">
+                    <div class="div">
+                        <input type="text" name="date"  class="datepicker k-input browser-default" id="dateofbirth" required/>
+                        <label for="dateofbirth" class="not" title="Hier klicken!"></label>
+                    </div>
                 </div>
                 
                 <h2 class="done" aria-hidden="true">Telefonnummer</h2>
                 <div class="row">
                     <div class="col-12" style="margin-top: 10px;">
-                        <div class="info-box">
-                            <input type="text" name="telefon" placeholder="+43..." class="k-input" id="telefonnummer" style="height: 40px;">
+                        <div class="div">
+                                <input type="text" name="telefon"  class="k-input browser-default" id="telefonnummer" required/>
+                                <label for="telefonnummer" class="not" title="Telefonnummer"></label>
                         </div>
                     </div>
                     
                 </div>
                 <h2 class="done" aria-hidden="true">Lieferung oder Abholung?</h2>
                 <div class="row">
-                    <div class="col-lg-6 col-md-12" id="abholung" style="display: none;">
+                    <div class="col-lg-6 col-md-12" id="abholung" style="display: none; padding-right: 15px!important;">
                         <div class="inputGroup">
                             <input id="radio1" name="radio1" type="radio" value="Abholung" class="radio"/>
                             <label for="radio1" class="la">Abholung</label>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12" id="lieferung" style="display: none;">
+                    <div class="col-lg-6 col-md-12" id="lieferung" style="display: none;padding-left: 15px!important">
                         <div class="inputGroup">
                             <input id="radio2" name="radio1" type="radio" value="Lieferung" class="radio"/>
                             <label for="radio2" class="la">Lieferung</label>
@@ -145,13 +154,13 @@
                 </div>
                     
                     <div class="row" id="time" style="display: none;">
-                    <div class="col-lg-6 col-md-12">
+                    <div class="col-lg-6 col-md-12" style="padding-right: 15px!important">
                         <div class="info-box">
                             <h5 class="header-k">Präferierte Zeit:</h5>
-                            <input type="text" name="lieferzeit" placeholder="Hier klicken!" class="timepicker kw-input" style="margin-top: 0;height: 50px;" id="lieferzeit">
+                            <input type="text" name="lieferzeit" placeholder="Hier klicken!" class="timepicker kw-input" style="margin-top: 0;height: 49px;" id="lieferzeit">
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12">
+                    <div class="col-lg-6 col-md-12" style="padding-left: 15px!important">
                         <div class="info-box">
                             <h5 class="header-k">Anmerkung (Optional)</h5>
                                 <textarea class="kw-input" name="anmerkungen" placeholder="Anmerkung" style="height: 50px; margin:0;" id="anmerkung"></textarea>
@@ -165,13 +174,13 @@
                 </div>
                 <h2 class="done" aria-hidden="true">Zahlungsart:</h2>
                 <div class="row">
-                    <div class="col-lg-6 col-md-12" id='bar' style="display: none;">
+                    <div class="col-lg-6 col-md-12" id='bar' style="display: none;padding-right: 15px!important">
                         <div class="inputGroup">
                             <input id="radio3" name="radio2" type="radio" value="Barzahlung" class="radio"/>
                             <label for="radio3" class="la">Barzahlung</label>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12" id="rechnung" style="display: none;">
+                    <div class="col-lg-6 col-md-12" id="rechnung" style="display: none;padding-left: 15px!important">
                         <div class="inputGroup">
                             <input id="radio4" name="radio2" type="radio" value="Rechnung" class="radio "/>
                             <label for="radio4" class="la">Rechnung</label>

@@ -87,7 +87,7 @@ input[type="checkbox"] {
 }
 
 
-label {
+label:not(.not) {
   display: block;
   position: relative;
   padding: 15px 0 15px 45px;
@@ -287,22 +287,27 @@ input[type="text"]::-webkit-inner-spin-button {
 
 .k-input {
     border:none;
-    border-bottom: 2px solid rgba(114, 116, 120, 0.7);
+    border: 1px solid rgba(114, 116, 120, 0.7);
     border-width: thin;
     background-color: rgba(255,255,255,0.0);
     width: 100%;
+    height: 43px;
+    border-radius: 5px;
+    padding-left: 6px;
 }
 
 .kw-input {
     border:none;
     border-bottom: 3px solid rgba(114, 116, 120, 0.7);
     border-width: thin;
-    background-color: rgba(255,255,255,0.0);
+    background-color: #0000000a;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 50px;
     overflow-wrap: break-word;
     height: 100px;
+    border-radius: 5px;
+    padding-left:6px;
 }
 
 .kw-input::placeholder {
@@ -521,7 +526,7 @@ input[type="date"] {
 }
 
 @media (max-width: 740px) {
-    label {
+    label:not(.not) {
         display: block;
         position: relative;
         padding: 15px 0 15px 0px;
@@ -598,7 +603,7 @@ input[type="date"] {
     height:auto;
 }
 
-.plac::placeholder {
+.plac {
     color:#ed6d68;
     
 
@@ -616,4 +621,71 @@ input[type=text]:not(.browser-default){
 
 input[type=text]:not(.browser-default)::placeholder{
     padding-left: 10px;   
+}
+
+
+
+
+.label-before {
+	line-height: 20px;
+	font-size: 12px;
+	top: -10px;
+	background: #fff;
+	padding: 0 6px;
+	left: 9px;
+}
+
+
+.div {
+  position: relative;
+    margin-top:15px;
+    margin-left: 15px;
+    margin-right:15px;
+    
+}
+.div > label {
+  position: absolute;
+    top: 2px;
+    left: 15px;
+    line-height: 40px;
+    font-size: 16px;
+    color: ;
+    transition: 300ms all;
+}
+.div > label::before {
+    content: attr(title);
+}
+
+
+.div input:focus + label {
+	line-height: 20px;
+	font-size: 12px;
+	top: -10px;
+	background: #fff;
+	padding: 0 6px;
+	left: 9px;
+    color: #333;
+}
+.div input:focus {
+    outline: 0;
+    border-color: #333;
+}
+
+.div input:valid + label {
+	line-height: 20px;
+	font-size: 12px;
+	top: -10px;
+	background: #fff;
+	padding: 0 6px;
+	left: 9px;
+    color:#333;
+}
+
+.col-lg-6, col-md-12, .col-12  {
+    padding: 0!important;
+}
+
+.row {
+    margin-right:0px!important;
+    margin-left:0px!important;
 }
