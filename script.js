@@ -81,7 +81,7 @@ async function fire() {
             var cont = document.getElementById('cont');
             h2.classList = "undone";
             h2.setAttribute('aria-Hidden', 'true');
-            h2.innerHTML= objects[obj]['name'] + '(Optional)';
+            h2.innerHTML= objects[obj]['name'];
             cont.insertBefore(h2, w); // before warenkorb
             var div = document.createElement('div')
             div.classList = 'items'
@@ -513,7 +513,6 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
             var straße = document.getElementById('straße');
             var stadt = document.getElementById('stadt');
             var postleitzahl = document.getElementById('postleitzahl');
-            var gemeinde = document.getElementById('gemeinde');
             var telefon = document.getElementById('telefonnummer');
             var agb = document.getElementById('agb');
             
@@ -540,7 +539,6 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                     "straße": straße.value,
                     "stadt": stadt.value,
                     "postleitzahl": postleitzahl.value,
-                    "gemeinde": gemeinde.value,
                     "wunschtermin": wunschtermin.value,
                     "telefonnummer": telefon.value,
                     "zustellung": zustellung,
@@ -956,7 +954,6 @@ var inputFields = [];
     var straße = document.getElementById('straße');
     var stadt = document.getElementById('stadt');
     var postleitzahl = document.getElementById('postleitzahl');
-    var gemeinde = document.getElementById('gemeinde');
     var telefon = document.getElementById('telefonnummer');
     
     var radio3 = document.getElementById('radio3');
@@ -971,7 +968,6 @@ var inputFields = [];
     inputFields.push(straße);
     inputFields.push(stadt);
     inputFields.push(postleitzahl);
-    inputFields.push(gemeinde);
     inputFields.push(telefon);
     inputFields.push(radio1);
     inputFields.push(radio2);
@@ -984,7 +980,7 @@ var inputFields = [];
     if(vorname.value == "" || nachname.value == "" || email.value == "") {
         return false;
     }
-    else if(straße.value == "" || stadt.value == "" || postleitzahl.value == "" || gemeinde.value == "" || telefon.value == "") {
+    else if(straße.value == "" || stadt.value == "" || postleitzahl.value == "" || telefon.value == "") {
         return false;
     }
     else if((radio1.checked == false) && (radio2.checked == false)){

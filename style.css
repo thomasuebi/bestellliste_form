@@ -343,7 +343,7 @@ input[type="radio"] {
 .inputGroup {
     background-color: rgba(255,255,255,0.3);
     display: block;
-    margin: 10px 0;
+    margin-top: 20px;
     position: relative;
 }
 .inputGroup label {
@@ -695,4 +695,5 @@ input[type=text]:not(.browser-default)::placeholder{
 .row {
     margin-right:0px!important;
     margin-left:0px!important;
+    margin-bottom: 5px!important;
 }
