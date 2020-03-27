@@ -697,3 +697,12 @@ input[type=text]:not(.browser-default)::placeholder{
     margin-left:0px!important;
     margin-bottom: 5px!important;
 }
+
+.tag {
+    color:#a6a1a1;
+    
+}
+
+.tag:hover {
+    color:#8a8888;
+}
