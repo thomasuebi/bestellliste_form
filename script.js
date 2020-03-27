@@ -532,6 +532,8 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 }
             }
             
+            
+            
             var kontaktAr = {
                     "vorname": vorname.value,
                     "nachname": nachname.value,
@@ -543,9 +545,15 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                     "telefonnummer": telefon.value,
                     "zustellung": zustellung,
                     "zahlung": zahlung,
+                    "gesamtpreis":gesamtsumme.innerHTML,
                     "agb": agb.checked
             };
             
+            
+            var gesamtsumme = document.getElementById("sumT");
+            if(gesamtsumme.innerHTML) {
+                kontaktAr.gesamtpreis = gesamtsumme.innerHTML;
+            }
             
             var lieferzeit = document.getElementById('lieferzeit')
             var anmerkung = document.getElementById('anmerkung');
