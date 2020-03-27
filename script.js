@@ -547,7 +547,6 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                     "telefonnummer": telefon.value,
                     "zustellung": zustellung,
                     "zahlung": zahlung,
-                    "gesamtpreis":gesamtsumme.innerHTML,
                     "agb": agb.checked
             };
             
