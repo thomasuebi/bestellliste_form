@@ -22,6 +22,8 @@ var database = firebase.firestore();
 
 var docRef = database.collection("forms").doc(userId);
 
+var summe; //zugriff auf das element
+
 async function fire() {
     
     
@@ -411,7 +413,7 @@ async function fire() {
            sumText.classList = "mob";
            div.appendChild(sumText);
            
-           var summe = document.createElement('h5');
+           summe = document.createElement('h5');
            summe.innerHTML = sum.toFixed(2);
            summe.id = 'sumT';
            summe.style.marginTop = '4%';
@@ -550,9 +552,9 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
             };
             
             
-            var gesamtsumme = document.getElementById("sumT");
-            if(gesamtsumme.innerHTML) {
-                kontaktAr.gesamtpreis = gesamtsumme.innerHTML;
+            
+            if(summe.innerHTML) {
+                kontaktAr.gesamtpreis = summe.innerHTML;
             }
             
             var lieferzeit = document.getElementById('lieferzeit')
