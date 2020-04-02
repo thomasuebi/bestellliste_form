@@ -121,6 +121,15 @@ input[type="checkbox"]:checked + label {
 input[type="checkbox"]:checked + label::before { 
     content: "✔ ";/* circle checkmark */
 }
+#agb:checked + label::before {
+    content: "\2611";
+}
+input[type="checkbox"] + label::before { 
+    content: "\2610";/* circle checkmark */
+    margin-left: -30px;
+    margin-right: 5px;
+    font-size:30px;
+}
 
 @keyframes done {
   0% {
@@ -527,7 +536,7 @@ input[type="date"] {
 }
 
 @media (max-width: 740px) {
-    label:not(.not) {
+    label:not(.not,.agb-a) {
         display: block;
         position: relative;
         padding: 15px 0 15px 0px;
