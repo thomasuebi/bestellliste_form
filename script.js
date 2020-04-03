@@ -63,7 +63,7 @@ async function fire() {
 
     if(info) {
         document.getElementById('info').style.display = "block";
-        document.getElementById('info').innerHTML = "<strong>Info an den Kunden: </strong>".concat(info)
+        document.getElementById('info').innerHTML = "<strong>Info: </strong>".concat(info)
     }
     
     

@@ -121,10 +121,10 @@ input[type="checkbox"]:checked + label {
 input[type="checkbox"]:checked + label::before { 
     content: "✔ ";/* circle checkmark */
 }
-#agb:checked + label::before {
+.agb:checked + label::before {
     content: "\2611";
 }
-input[type="checkbox"] + label::before { 
+.agb + label::before { 
     content: "\2610";/* circle checkmark */
     margin-left: -30px;
     margin-right: 5px;
