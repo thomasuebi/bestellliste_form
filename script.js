@@ -582,10 +582,10 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 xhr.open("GET", "https://www.bestellliste.com/functions/sendmail.php?data=" + json);
                 xhr.onload = function (e) {
                   alert("Bestellung erfolgreich abgeschickt!")
-                  //window.location.href="/?id=".concat(userId);
                   if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
                       console.log(xhr.responseText);
+                      window.location.href="/?id=".concat(userId);
                     } else {
                       console.error(xhr.statusText);
                     }
