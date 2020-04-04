@@ -553,7 +553,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
             
             
             console.log(summe.innerHTML)
-            kontaktAr.gesamtpreis = document.getElementById('sumT').innerHTML;
+            kontaktAr.gesamtpreis = summe.innerHTML;
                 
             
             
