@@ -552,9 +552,10 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
             
             
             
-            if(summe.innerHTML) {
-                kontaktAr.gesamtpreis = summe.innerHTML;
-            }
+           
+            kontaktAr.gesamtpreis = summe.innerHTML;
+                
+            
             
             var lieferzeit = document.getElementById('lieferzeit')
             var anmerkung = document.getElementById('anmerkung');
