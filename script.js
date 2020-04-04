@@ -160,7 +160,7 @@ async function fire() {
 
                     var p2 = document.createElement('p');
                     p2.style.display = "inline";
-                    p2.innerHTML = " EUR";
+                    p2.innerHTML = " &nbsp;EUR";
                     p2.classList = "eur";
 
                     tex.appendChild(p1);
@@ -570,7 +570,6 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 kontaktAr.wunsch = wunsch.value;
             }
             
-            //check ob das doc existiert, wenn ja dann update
             database.collection("orders").add({
                 formId: userId,
                 data: dataAr,
@@ -581,9 +580,20 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 var json = JSON.stringify(email);
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "https://www.bestellliste.com/functions/sendmail.php?data=" + json);
+                xhr.onload = function (e) {
+                  alert("Bestellung erfolgreich abgeschickt!")
+                  window.location.href="/?id=".concat(userId);
+                  if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                      console.log(xhr.responseText);
+                    } else {
+                      console.error(xhr.statusText);
+                    }
+                  }
+                };
                 xhr.send(null);
-                alert("Bestellung erfolgreich abgeschickt!")
-                window.location.href="/?id=".concat(userId);
+                
+
                 
             });
             
