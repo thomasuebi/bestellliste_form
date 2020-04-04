@@ -552,7 +552,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
             
             
             
-           
+            console.log(summe.innerHTML)
             kontaktAr.gesamtpreis = document.getElementById('sumT').innerHTML;
                 
             
@@ -586,7 +586,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                   if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
                       console.log(xhr.responseText);
-                      window.location.href="/?id=".concat(userId);
+                      //window.location.href="/?id=".concat(userId);
                     } else {
                       console.error(xhr.statusText);
                     }
