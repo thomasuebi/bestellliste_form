@@ -150,17 +150,17 @@ async function fire() {
                     p1.style.display = "inline";
                     p1.classList = "price";
                     if(objects[obj]['products'][product]['price'] == "" || objects[obj]['products'][product]['price'] == " ") {
-                        p1.innerHTML = "0.00";
+                        p1.innerHTML = "0,00";
                     }
                     else {
                         var ip = parseFloat(objects[obj]['products'][product]['price'])
-                        p1.innerHTML = ip.toFixed(2);
+                        p1.innerHTML = ip.toFixed(2).replace(".", ",");
                     }
                     
 
                     var p2 = document.createElement('p');
                     p2.style.display = "inline";
-                    p2.innerHTML = " &nbsp;EUR";
+                    p2.innerHTML = " EUR";
                     p2.classList = "eur";
 
                     tex.appendChild(p1);
@@ -208,7 +208,7 @@ async function fire() {
             pID = 'p-'.concat(elem.id);
             pTag = document.getElementById(pID);
             innerResult = prices[parseInt(elem.id) - 1];
-            pTag.innerHTML = innerResult.toFixed(2);
+            pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
             var checkbox = document.getElementById('item'.concat(elem.id))
             checkbox.checked = false;
         }
@@ -271,28 +271,28 @@ async function fire() {
                         if(parseInt(next.id) > 1000) {
                             var last2 = parseInt(next.id) -1000;
                             var innerResult = d - prices[last2 - 1];
-                            pTag.innerHTML = innerResult.toFixed(2);
+                            pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
 
                             //Ausgangselement in der Liste
                             pID = 'p-'.concat(last2);
                             pTag = document.getElementById(pID);
-                            pTag.innerHTML = innerResult.toFixed(2);
+                            pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                         }
                         else {
                             var last2 = parseInt(next.id) + 1000;
                             if(document.getElementById(last2)) {
                                 var all = parseInt(next.id) + 1000;
                                 var innerResult = d - prices[parseInt(next.id) - 1];
-                                pTag.innerHTML = innerResult.toFixed(2);
+                                pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
 
                                 //Anderes Element
                                 pID = 'p-'.concat(all);
                                 pTag = document.getElementById(pID);
-                                pTag.innerHTML = innerResult.toFixed(2);
+                                pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                             }
                             else {
                                 var innerResult = d - prices[parseInt(next.id) - 1];
-                                pTag.innerHTML = innerResult.toFixed(2);
+                                pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                             }
 
                         }
@@ -328,28 +328,28 @@ async function fire() {
                             //Element im Warenkorb
                             var last2 = parseInt(prev.id) -1000;
                             var innerResult = d + prices[last2 - 1];
-                            pTag.innerHTML = innerResult.toFixed(2);
+                            pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
 
                             //Ausgangselement in der Liste
                             pID = 'p-'.concat(last2);
                             pTag = document.getElementById(pID);
-                            pTag.innerHTML = innerResult.toFixed(2);
+                            pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                         }
                         else {
                             var last2 = parseInt(prev.id) + 1000;
                             if(document.getElementById(last2)) {
                                 var all = parseInt(prev.id) + 1000;
                                 var innerResult = d + prices[parseInt(prev.id) - 1];
-                                pTag.innerHTML = innerResult.toFixed(2);
+                                pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
 
                                 //Anderes Element
                                 pID = 'p-'.concat(all);
                                 pTag = document.getElementById(pID);
-                                pTag.innerHTML = innerResult.toFixed(2);
+                                pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                             }
                             else {
                                 var innerResult = d + prices[parseInt(prev.id) - 1];
-                                pTag.innerHTML = innerResult.toFixed(2);
+                                pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                             }
 
                         }
@@ -414,7 +414,7 @@ async function fire() {
            div.appendChild(sumText);
            
            summe = document.createElement('h5');
-           summe.innerHTML = sum.toFixed(2);
+           summe.innerHTML = sum.toFixed(2).replace(".",",");
            summe.id = 'sumT';
            summe.style.marginTop = '4%';
            
@@ -426,6 +426,7 @@ async function fire() {
            eur.id = 'eur';
            eur.style.marginTop = '4%';
            eur.style.textAlign = 'right';
+           eur.style.marginLeft = "5px";
            eur.classList = "mob";
            
            div.appendChild(summe);
@@ -439,7 +440,7 @@ async function fire() {
            
        }
        if(document.getElementById('sumT')) {
-            document.getElementById('sumT').innerHTML = sum.toFixed(2);
+            document.getElementById('sumT').innerHTML = sum.toFixed(2).replace(".",",");
           }
        
        if(document.getElementById('sumT') && sum.toFixed(2) == 0.00) {
@@ -587,7 +588,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                   if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
                       console.log(xhr.responseText);
-                      window.location.href="/?id=".concat(userId);
+                      //window.location.href="/?id=".concat(userId);
                     } else {
                       console.error(xhr.statusText);
                     }
@@ -681,34 +682,35 @@ function add(event) {
         if(prev.value != 0) {
             var pID = 'p-'.concat(prev.id);
             var pTag = document.getElementById(pID);
+            console.log("yeah", pTag.innerHTML)
             var inner = pTag.innerHTML;
             var d = parseFloat(inner);
             if(parseInt(prev.id) > 1000) {
                 //Element im Warenkorb
                 var last2 = parseInt(prev.id) -1000;
                 var innerResult = d + prices[last2 - 1];
-                pTag.innerHTML = innerResult.toFixed(2);
+                pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                 
                 //Ausgangselement in der Liste
                 pID = 'p-'.concat(last2);
                 pTag = document.getElementById(pID);
-                pTag.innerHTML = innerResult.toFixed(2);
+                pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
             }
             else {
                 var last2 = parseInt(prev.id) + 1000;
                 if(document.getElementById(last2)) {
                     var all = parseInt(prev.id) + 1000;
                     var innerResult = d + prices[parseInt(prev.id) - 1];
-                    pTag.innerHTML = innerResult.toFixed(2);
+                    pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                     
                     //Anderes Element
                     pID = 'p-'.concat(all);
                     pTag = document.getElementById(pID);
-                    pTag.innerHTML = innerResult.toFixed(2);
+                    pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                 }
                 else {
                     var innerResult = d + prices[parseInt(prev.id) - 1];
-                    pTag.innerHTML = innerResult.toFixed(2);
+                    pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                 }
                
             }
@@ -742,28 +744,28 @@ function add(event) {
             if(parseInt(next.id) > 1000) {
                 var last2 = parseInt(next.id) - 1000;
                 var innerResult = d - prices[last2 - 1];
-                pTag.innerHTML = innerResult.toFixed(2);
+                pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                 
                 //Ausgangselement in der Liste
                 pID = 'p-'.concat(last2);
                 pTag = document.getElementById(pID);
-                pTag.innerHTML = innerResult.toFixed(2);
+                pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
             }
             else {
                 var last2 = parseInt(next.id) + 1000;
                 if(document.getElementById(last2)) {
                     var all = parseInt(next.id) + 1000;
                     var innerResult = d - prices[parseInt(next.id) - 1];
-                    pTag.innerHTML = innerResult.toFixed(2);
+                    pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                     
                     //Anderes Element
                     pID = 'p-'.concat(all);
                     pTag = document.getElementById(pID);
-                    pTag.innerHTML = innerResult.toFixed(2);
+                    pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                 }
                 else {
                     var innerResult = d - prices[parseInt(next.id) - 1];
-                    pTag.innerHTML = innerResult.toFixed(2);
+                    pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                 }
                
             }
@@ -812,12 +814,12 @@ var inputFields = [];
                 if(parseInt(next.id) > 1000) {
                     var last2 = parseInt(next.id) -1000;
                     var innerResult = d - prices[last2 - 1];
-                    pTag.innerHTML = innerResult.toFixed(2);
+                    pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
 
                     //Ausgangselement in der Liste
                     pID = 'p-'.concat(last2);
                     pTag = document.getElementById(pID);
-                    pTag.innerHTML = innerResult.toFixed(2);
+                    pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                 }
                 else {
                     var last2 = parseInt(next.id) + 1000;
@@ -825,21 +827,21 @@ var inputFields = [];
                         console.log("Ja")
                         var all = parseInt(next.id) + 1000;
                         var innerResult = d - prices[parseInt(next.id) - 1];
-                        pTag.innerHTML = innerResult.toFixed(2);
+                        pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                         console.log(pTag)
 
                         //Anderes Element
                         pID = 'p-'.concat(all);
                         pTag = document.getElementById(pID);
                         console.log("hier")
-                        pTag.innerHTML = innerResult.toFixed(2);
+                        pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                         if(current == 1) {
                             pTag.parentElement.parentElement.nextElementSibling.firstElementChild.click(); //remove the warenkorb item
                         }
                     }
                     else {
                         var innerResult = d - prices[parseInt(next.id) - 1];
-                        pTag.innerHTML = innerResult.toFixed(2);
+                        pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                     }
 
                 }
@@ -883,34 +885,37 @@ var inputFields = [];
                     var pID = 'p-'.concat(prev.id);
                     var pTag = document.getElementById(pID);
                     var inner = pTag.innerHTML;
+                    console.log("yeah", inner.replace(".", ","))
                     var d = parseFloat(inner);
 
                     if(parseInt(prev.id) > 1000) {
                         //Element im Warenkorb
                         var last2 = parseInt(prev.id) -1000;
                         var innerResult = d + prices[last2 - 1];
-                        pTag.innerHTML = innerResult.toFixed(2);
+                        console.log(innerResult)
+                        pTag.innerHTML = innerResult.toFixed(2).replace(".", ",");
 
                         //Ausgangselement in der Liste
                         pID = 'p-'.concat(last2);
                         pTag = document.getElementById(pID);
-                        pTag.innerHTML = innerResult.toFixed(2);
+                        console.log(innerResult.toFixed(2))
+                        pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                     }
                     else {
                         var last2 = parseInt(prev.id) + 1000;
                         if(document.getElementById(last2)) {
                             var all = parseInt(prev.id) + 1000;
                             var innerResult = d + prices[parseInt(prev.id) - 1];
-                            pTag.innerHTML = innerResult.toFixed(2);
+                            pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
 
                             //Anderes Element
                             pID = 'p-'.concat(all);
                             pTag = document.getElementById(pID);
-                            pTag.innerHTML = innerResult.toFixed(2);
+                            pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                         }
                         else {
                             var innerResult = d + prices[parseInt(prev.id) - 1];
-                            pTag.innerHTML = innerResult.toFixed(2);
+                            pTag.innerHTML = innerResult.toFixed(2).replace(".",",");
                             console.log(pTag)
                         }
 
@@ -928,7 +933,7 @@ var inputFields = [];
                 }
 
 
-                }
+            }
             
             
     }
