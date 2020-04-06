@@ -6,7 +6,7 @@
 
 html {
   min-height: 100%;
-    scroll-behavior: smooth;
+  
 }
 
 body {
@@ -14,6 +14,7 @@ body {
   color: #333;
     background: transparent;
   font: 500 1.2em/1.2 'Roboto', sans-serif;
+    scroll-behavior: smooth;
     
 }
 
@@ -460,20 +461,12 @@ input[type="radio"] {
     justify-content: center;
 }
 
-[type="date"] {
-  background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
-}
-[type="date"]::-webkit-inner-spin-button {
-  display: none;
-}
-[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0;
-}
 
 /* custom styles */
 
 .date {
   display: block;
+    position: relative;
     border: none;
     margin: 0;
     margin-right: 30px;
@@ -714,4 +707,8 @@ input[type=text]:not(.browser-default)::placeholder{
 
 .tag:hover {
     color:#8a8888;
+}
+
+.modal-content {
+    border: none!important
 }
