@@ -575,7 +575,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 formId: userId,
                 data: dataAr,
                 kontakdaten: kontaktAr,
-                created: firebase.database.ServerValue.TIMESTAMP
+                created: new Date().now()
             
             }).then(function() {            
                 var email = {email:userEmail, warenkorb:dataAr, kontaktdaten:kontaktAr}
