@@ -574,10 +574,11 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
             database.collection("orders").add({
                 formId: userId,
                 data: dataAr,
-                kontakdaten: kontaktAr
+                kontakdaten: kontaktAr,
+                created: firebase.database.ServerValue.TIMESTAMP
             
             }).then(function() {            
-                var email = {email:userEmail, warenkorb:dataAr, kontaktdaten:kontaktAr, timestamp: new Date()}
+                var email = {email:userEmail, warenkorb:dataAr, kontaktdaten:kontaktAr}
                 var json = JSON.stringify(email);
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "https://www.bestellliste.com/functions/sendmail.php?data=" + json);
