@@ -575,7 +575,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 formId: userId,
                 data: dataAr,
                 kontakdaten: kontaktAr,
-                created: new Date().now()
+                created: Date.now()
             
             }).then(function() {            
                 var email = {email:userEmail, warenkorb:dataAr, kontaktdaten:kontaktAr}
