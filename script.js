@@ -577,7 +577,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 kontakdaten: kontaktAr
             
             }).then(function() {            
-                var email = {email:userEmail, warenkorb:dataAr, kontaktdaten:kontaktAr}
+                var email = {email:userEmail, warenkorb:dataAr, kontaktdaten:kontaktAr, timestamp: new Date()}
                 var json = JSON.stringify(email);
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "https://www.bestellliste.com/functions/sendmail.php?data=" + json);
@@ -586,15 +586,13 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                   if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
                       console.log(xhr.responseText);
-                      window.location.href="/?id=".concat(userId);
+                      //window.location.href="/?id=".concat(userId);
                     } else {
                       console.error(xhr.statusText);
                     }
                   }
                 };
                 xhr.send(null);
-                
-
                 
             });
             
