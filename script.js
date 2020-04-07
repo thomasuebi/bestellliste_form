@@ -186,7 +186,7 @@ async function fire() {
     
     for(var a = 0; a < priceTags.length; a++) {
         if(priceTags[a].innerHTML == "" || priceTags[a].innerHTML == " ") {
-            prices.push(parseFloat("0"))
+            prices.push(parseFloat("0.00"))
         }
         prices.push(parseFloat(priceTags[a].innerHTML.replace(',','.').replace(' ','')));
     };
@@ -266,7 +266,7 @@ async function fire() {
                     if(next.value != 0) {
                         pID = 'p-'.concat(next.id);
                         pTag = document.getElementById(pID);
-                        inner = pTag.innerHTML;
+                        inner = pTag.innerHTML.replace("," , ".");
                         d = parseFloat(inner);
                         if(parseInt(next.id) > 1000) {
                             var last2 = parseInt(next.id) -1000;
@@ -322,7 +322,7 @@ async function fire() {
                     if(prev.value != 0) {
                         var pID = 'p-'.concat(prev.id);
                         var pTag = document.getElementById(pID);
-                        var inner = pTag.innerHTML;
+                        var inner = pTag.innerHTML.replace(",",".") ;
                         var d = parseFloat(inner);
                         if(parseInt(prev.id) > 1000) {
                             //Element im Warenkorb
@@ -395,7 +395,7 @@ async function fire() {
        
        var sum = 0;
        for(var i = 0; i < warenkorb.length; i++) {
-        sum += parseFloat(warenkorb[i].innerHTML);
+        sum += parseFloat(warenkorb[i].innerHTML.replace(",", "."));
        }
        
        if(warenkorb.length > 0 && !document.getElementById('sum')) {
@@ -498,7 +498,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 if(korbEl[i].nodeType == Node.ELEMENT_NODE) {
                     console.log(1);
                     var name = korbEl[i].firstElementChild.lastElementChild.innerHTML;
-                    var price = korbEl[i].lastElementChild.previousElementSibling.firstElementChild.firstElementChild.innerHTML;
+                    var price = korbEl[i].lastElementChild.previousElementSibling.firstElementChild.firstElementChild.innerHTML.replace(".",",");
                     var stücke = korbEl[i].firstElementChild.nextElementSibling.firstElementChild.firstElementChild.nextElementSibling.value;
                     dataAr.push({
                                 "name": name,
@@ -554,7 +554,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
             
             
             console.log(summe.innerHTML)
-            kontaktAr.gesamtpreis = summe.innerHTML;
+            kontaktAr.gesamtpreis = summe.innerHTML.replace(".", ",");
                 
             
             
@@ -683,7 +683,7 @@ function add(event) {
             var pID = 'p-'.concat(prev.id);
             var pTag = document.getElementById(pID);
             console.log("yeah", pTag.innerHTML)
-            var inner = pTag.innerHTML;
+            var inner = pTag.innerHTML.replace(",", ".");
             var d = parseFloat(inner);
             if(parseInt(prev.id) > 1000) {
                 //Element im Warenkorb
@@ -739,7 +739,7 @@ function add(event) {
         if(next.value != 0) {
             pID = 'p-'.concat(next.id);
             pTag = document.getElementById(pID);
-            inner = pTag.innerHTML;
+            inner = pTag.innerHTML.replace(",", ".");
             d = parseFloat(inner);
             if(parseInt(next.id) > 1000) {
                 var last2 = parseInt(next.id) - 1000;
@@ -809,7 +809,7 @@ var inputFields = [];
             if(next.value != 0) {
                 pID = 'p-'.concat(next.id);
                 pTag = document.getElementById(pID);
-                inner = pTag.innerHTML;
+                inner = pTag.innerHTML.replace(",", ".");
                 d = parseFloat(inner);
                 if(parseInt(next.id) > 1000) {
                     var last2 = parseInt(next.id) -1000;
@@ -884,7 +884,7 @@ var inputFields = [];
                 if(prev.value != 0) {
                     var pID = 'p-'.concat(prev.id);
                     var pTag = document.getElementById(pID);
-                    var inner = pTag.innerHTML;
+                    var inner = pTag.innerHTML.replace(",", ".");
                     console.log("yeah", inner.replace(".", ","))
                     var d = parseFloat(inner);
 
