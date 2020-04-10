@@ -535,7 +535,16 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                 }
             }
             
+            var termin = wunschtermin.value.split("-") //format the date
             
+            if(termin.length > 1) {
+                var termin = wunschtermin.value.split("-")
+                var terminwunsch = termin[2] + "." + termin[1] + "." + termin[0];
+                wunschtermin = terminwunsch;
+            }else {
+                wunschtermin = wunschtermin.value
+            }
+           
             
             var kontaktAr = {
                     "vorname": vorname.value,
@@ -544,7 +553,7 @@ var submit = document.getElementById('submitbtn').addEventListener('click', func
                     "straße": straße.value,
                     "stadt": stadt.value,
                     "postleitzahl": postleitzahl.value,
-                    "wunschtermin": wunschtermin.value,
+                    "wunschtermin": wunschtermin,
                     "telefonnummer": telefon.value,
                     "zustellung": zustellung,
                     "zahlung": zahlung,
