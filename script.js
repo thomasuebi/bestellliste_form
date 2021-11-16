@@ -1,13 +1,13 @@
 
 // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: "AIzaSyBMRmd0qVwZlNKxddN71lpHAGgOMrt-7wc",
+    apiKey: "",
     authDomain: "bestellliste-e3334.firebaseapp.com",
     databaseURL: "https://bestellliste-e3334.firebaseio.com",
     projectId: "bestellliste-e3334",
     storageBucket: "bestellliste-e3334.appspot.com",
     messagingSenderId: "702169543027",
-    appId: "1:702169543027:web:31061d919b597d2a42d506",
+    appId: "",
     measurementId: "G-XD72ZYJ9DT"
   };
   // Initialize Firebase
